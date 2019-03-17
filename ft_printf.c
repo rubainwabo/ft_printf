@@ -6,7 +6,7 @@
 /*   By: rkamegne <rkamegne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:36:15 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/03/17 17:18:36 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/03/17 17:45:18 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		ft_printf(const char restrict *format, ...)
 {
 	va_list	arg;
 	va_start(arg, format);
-	char 	*f;
+	const restrict char 	*f;
 	while (*format)
 	{
 		if (*format == '%')
@@ -58,11 +58,12 @@ int		ft_printf(const char restrict *format, ...)
 		format++;
 	}
 	va_end(arg);
+	ft_putendl(f);
 	return (0);
 }
 
 int		main(void)
 {
-	printf("%c\n", TYPES[0]);
+	ft_printf("%+++++-d\n");
 	return (0);
 }
