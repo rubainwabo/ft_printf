@@ -6,7 +6,7 @@
 /*   By: rkamegne <rkamegne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:36:15 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/03/17 17:45:18 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/04/06 02:25:14 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,20 @@ int		main(int argc, char *argv[])
 	return (0);
 }*/
 
-int		ft_printf(const char restrict *format, ...)
+int		ft_printf(const char * restrict format, ...)
 {
 	va_list	arg;
 	va_start(arg, format);
-	const restrict char 	*f;
+	const char * restrict	f;
 	while (*format)
 	{
 		if (*format == '%')
-			f = ft_getFlags(format, arg);
+			f = ft_getFlags(format);
 		else
 			ft_putchar(*format);
 		format++;
 	}
 	va_end(arg);
 	ft_putendl(f);
-	return (0);
-}
-
-int		main(void)
-{
-	ft_printf("%+++++-d\n");
 	return (0);
 }

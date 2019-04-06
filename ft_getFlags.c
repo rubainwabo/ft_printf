@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_getFlags.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/05 18:56:27 by rkamegne          #+#    #+#             */
+/*   Updated: 2019/04/06 02:27:24 by rkamegne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
-char	*ft_getFlags(const char restrict *format, va_list arg)
+char	*ft_getFlags(const char * restrict format)
 {
 	char 	*flag;
 	char 	*ptr;
