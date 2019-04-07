@@ -6,9 +6,11 @@
 /*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 17:45:34 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/01/12 20:50:12 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/04/07 00:50:59 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		ft_atoi(const char *str)
 {

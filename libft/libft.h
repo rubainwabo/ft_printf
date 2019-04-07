@@ -6,7 +6,7 @@
 /*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 21:45:21 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/01/29 16:27:23 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/04/06 20:30:00 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int				ft_cisspace(int c);
 int				ft_strlen_err(const char *str);
 int				ft_sqrt(int nb);
 char			*ft_replace(char *str, int c, int b);
-int				ft_count_words(char *str, char delim);
+int				ft_count_words(const char *str, char c);
 t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
@@ -97,4 +97,5 @@ void			ft_lstadd(t_list **alst, t_list *new);
 char			*ft_strdup_at(char *str, char c);
 int				ft_atoi_base(const char *str, int str_base);
 int				ft_ispace(char c);
+char			*ft_strchr_alpha(const char *s, int c);
 #endif

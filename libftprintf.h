@@ -6,7 +6,7 @@
 /*   By: rkamegne <rkamegne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:31:11 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/06 02:28:46 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/04/06 20:56:11 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,15 @@
 # define TYPES "cspdiouxX"
 # define FLAGS " #0-+hlL"
 
-char	*ft_parse(const char *restrict format);
-char	*ft_getFlags(const char * restrict format);
+typedef struct		s_conv
+{
+	char			c;
+	char			*flags;
+	int				padding;
+	int				precision;
+	char			size;
+}					t_conv;
+void	ft_parse(const char *restrict format, va_list arg);
+char	*ft_getflags(const char * restrict format);
 int		ft_printf(const char * restrict format, ...);
 #endif

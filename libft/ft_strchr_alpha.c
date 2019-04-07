@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strchr_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/12 22:59:53 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/06 20:07:53 by rkamegne         ###   ########.fr       */
+/*   Created: 2019/04/06 18:14:37 by rkamegne          #+#    #+#             */
+/*   Updated: 2019/04/06 18:15:43 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+char	*ft_strchr_alpha(const char *s, int c)
 {
-	size_t	i;
-	char	*str;
+	int		i;
 
 	i = 0;
-	str = (char*)malloc(size + 1);
-	if (str == NULL)
-		return (NULL);
-	while (i < size + 1)
+	while (s[i])
 	{
-		str[i] = '\0';
+		if (s[i] == c)
+			return ((char*)&s[i]);
+		if (ft_isalpha(s[i]))
+			break ;
 		i++;
 	}
-	return (str);
+	if (c == 0)
+		return ((char*)&s[i]);
+	return (NULL);
 }
