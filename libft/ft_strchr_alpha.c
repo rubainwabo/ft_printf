@@ -12,6 +12,14 @@
 
 #include "libft.h"
 
+int		ft_isalpha_spec(int c)
+{
+	if (c == 'c' || c == 's' || c == 'd' || c == 'i' || c == 'o' || c == 'u' ||
+		c == 'x' || c == 'X')
+		return (1);
+	return (0);
+}
+
 char	*ft_strchr_alpha(const char *s, int c)
 {
 	int		i;
@@ -21,8 +29,8 @@ char	*ft_strchr_alpha(const char *s, int c)
 	{
 		if (s[i] == c)
 			return ((char*)&s[i]);
-		if (ft_isalpha(s[i]))
-			break ;
+		if (ft_isalpha_spec(s[i]))
+			break;
 		i++;
 	}
 	if (c == 0)

@@ -6,7 +6,7 @@
 /*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 02:25:46 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/06 20:39:43 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/04/07 17:30:37 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@ int 	main(void)
 {
 	// Tests for printf
 	ft_printf("-------- FT_PRINTF PARSING TEST --------\n\n");
-	//ft_printf("test5: %055.1111110d\n");
-/*	ft_printf("test1 : print of a=%++2525#++.55--de hello and %++++.66---X this guy is moving %+. #4u ii\n");*/
-	ft_printf("test2: %-- .1215545 1d this works? Yes i guess %1++#.115defef\n");
-/*	ft_printf("test3 : %0000         xThis one is not tricky%++++ddddate of %.u day\n");
-	ft_printf("test4: %----------cmonkas, i like %#i twitch\n");
-	ft_printf("test5: %+++d eeeeeeeeeeeeeeeee\n");*/
+	ft_printf("%%%%ffff%%%%%%%+++99d\n");
+	// ft_printf("test5: %055.1111110d\n");
+	// ft_printf("test1 : %+-+++#x ioi %lold %###--u % ++ hhh .52 25s\n");
+	// ft_printf("test2: %.55Lllhhhh+12155451d this works? Yes i guess %--l-l59lL++#.115 33defef\n");
+	// ft_printf("test3 : %0000         xThis one is not tricky%++++ddddate of %.u day\n");
+	// ft_printf("test4: %----------cmonkas, i like %#i twitch\n");
+	// ft_printf("test5: %++ewfffffffffffff+d eeeeeeeeeeeeeeeee\n");
 	/*ft_printf("test6: string without any problem!\n");
 	ft_printf("test7: %++++----o obliged to %+++++\n");
 	// printf of the libc
@@ -34,4 +35,14 @@ int 	main(void)
 	printf("test6: string without any problem!\n");
 	printf("test7: %++++----o obliged to %+++++\n");*/
 	return (0);
+	/*	printf("\nprecision = %d\n", type->precision);
+	printf("padding = %d\n", type->padding);
+	printf("size = %c\n", type->size);
+	printf("conversion type = %c\n", type->c);
+	printf("----flags activated----\n");
+	printf("zero : %d\n", type->z);
+	printf("space : %d\n", type->s);
+	printf("plus : %d\n", type->p);
+	printf("minus : %d\n", type->m);
+	printf("hashtag : %d\n", type->h);*/
 }

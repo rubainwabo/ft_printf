@@ -6,94 +6,102 @@
 /*   By: rkamegne <rkamegne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:24:13 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/07 01:47:04 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/04/07 16:02:44 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ft_patoi(char *str, int *offset)
+static void		ft_get_size(t_conv *type, char *str, int i)
 {
-	int		nbr;
+	unsigned int	count;
 
-	nbr = 0;
-	if (!str)
-		return (0);
-	while (ft_isdigit(str[*offset]))
-	{
-		nbr *= 10;
-		nbr += str[(*offset)++] - '0';
-	}
-	(*offset)--;
-	return (nbr);
+	count = 0;
+	if (str[i] == 'l' && type->size == '0' && (count =
+				ft_count_words(str + i, 'l')))
+		type->size = (count % 2 == 0) ? 'a' : 'l';
+	else if (str[i] == 'L' && type->size == '0')
+		type->size = 'L';
+	else if (str[i] == 'h' && type->size == '0' && (count =
+				ft_count_words(str + i, 'h')))
+		type->size = (count % 2 == 0) ? 'b' : 'h';
 }
 
-void	ft_get_prec_padd(t_conv *type, char *str, int *i) //padding, precision
+
+static void		ft_get_prec_padd(t_conv *type, char *str, int *i) //padding, precision
 {
-	if (str[*i] == '.')
+	if (str[*i] == '.' && type->precision == 0)
 	{
 		*i += 1;
 		type->precision = ft_patoi(str, i);
 	}
-	else if (ft_isdigit(str[*i]) && str[*i] > 0)
-		type->padding = ft_patoi(str, i);	
+	else if (str[*i] == '.' && type->precision != 0)
+	{
+		*i += 1;
+		ft_patoi(str, i);
+	}
+	else if (ft_isdigit(str[*i]) && (str[*i] - '0') > 0 && type->padding
+		== 0)
+		type->padding = ft_patoi(str, i);
+	else
+		ft_get_size(type, str, *i);	
 }
 
-void	ft_get_options(char *format, t_conv *type, int offset)
+static void			ft_get_options(char *format, t_conv *type, int offset)
 {
-	int	i; // a stands for hh  and b for ll
-	int	j;
+	int 			i; // a stands for ll  and b for hh
 	char			*str;
 	int				nbr;
 
 	i = -1;
-	j = 0;
-	type->precision = 0;
-	type->padding = 0;
 	if (!(str = (char*)ft_memcpy((void*)ft_strnew(offset), (void*)format,
-					(size_t)offset)) || !(type->flags = ft_memalloc(11)))
+					(size_t)offset)))
 		exit(EXIT_FAILURE);
 	while (++i < offset)
 	{
-		if (str[i] == '+' && !ft_strchr(type->flags, '+'))
-			type->flags[j++] = '+';
-		else if (str[i] == '-' && !ft_strchr(type->flags, '-'))
-			type->flags[j++] = '-';
-		else if (str[i] == '#' && !ft_strchr(type->flags, '#'))
-			type->flags[j++] = '#';
-		else if (str[i] == ' ' && !ft_strchr(type->flags, ' '))
-			type->flags[j++] = ' ';
-		else if (str[i] == '0' && !ft_strchr(type->flags, '0'))
-			type->flags[j++] = '0';
+		// FLAGS
+		if (str[i] == '+')
+			type->p = 1;
+		else if (str[i] == '-')
+			type->m = 1;
+		else if (str[i] == '#')
+			type->h = 1;
+		else if (str[i] == ' ')
+			type->s = 1;
+		else if (str[i] == '0')
+			type->z = 1;
 		else
 			ft_get_prec_padd(type, str, &i);
 	}
 }
 
-char	*ft_parse_conv(char *format)
+static char		*ft_parse_conv(char *format, va_list arg)
 {
 	unsigned int		offset;
 	char				*o; // offset pointer to check conversion type
 	unsigned int		i;
 	t_conv				*type;
 
-	offset = 0;
-	i = -1;
-	if (!(type = (t_conv*)malloc(sizeof(*type))))
-		exit(EXIT_FAILURE);
-	while (TYPES[++i])
-		if ((o = ft_strchr_alpha(format, TYPES[i])) &&
-				(offset = o - format))
-			break;
-	if (o != NULL)
-		type->c = *o;
-	ft_get_options(format, type, offset);
-	i = -1;
-	while (type->flags[++i])
-		printf("flags : %c\n", type->flags[i]);
-	printf("precision = %d\n", type->precision);
-	printf("padding = %d\n", type->padding);
-	format += offset;
+	if (*format == '%')
+		ft_putchar('%');
+	else
+	{
+		ft_init(&type);
+		i = -1;
+		offset = 0;
+		while (TYPES[++i])
+		{
+			if ((o = ft_strchr_alpha(format, TYPES[i])))
+			{
+				offset = o - format;
+				break;
+			}
+		}
+		if (o != NULL)
+			type->c = *o;
+		ft_get_options(format, type, offset);
+		format += offset;
+	}
 	return (format);
 }
 
@@ -102,7 +110,7 @@ void		ft_parse(const char *restrict format, va_list arg)
 	while (*format)
 	{
 		if (*format == '%')
-			format = ft_parse_conv((char*)(format + 1));
+			format = ft_parse_conv((char*)(format + 1), arg);
 		else
 			ft_putchar(*format);
 		format++;

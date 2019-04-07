@@ -6,12 +6,12 @@
 #    By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/06 02:03:49 by rkamegne          #+#    #+#              #
-#    Updated: 2019/04/06 18:00:38 by rkamegne         ###   ########.fr        #
+#    Updated: 2019/04/07 19:08:13 by rkamegne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = printf
-SRC = ft_parse.c ft_printf.c main.c
+SRC = ft_parse.c ft_printf.c main.c ft_utils.c
 OBJ = $(SRC:.c=.o)
 LIB = libftprintf.a
 .PHONY : all clean fclean re
