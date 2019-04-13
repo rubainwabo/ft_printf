@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse.c                                       :+:      :+:    :+:   */
+/*   ft_parse.c                                       :+:      :+:    :+:     */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkamegne <rkamegne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:24:13 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/07 16:02:44 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/04/10 00:01:30 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,29 @@
 
 static void		ft_get_size(t_conv *type, char *str, int i)
 {
-	unsigned int	count;
+	int 	count;
 
 	count = 0;
-	if (str[i] == 'l' && type->size == '0' && (count =
-				ft_count_words(str + i, 'l')))
-		type->size = (count % 2 == 0) ? 'a' : 'l';
-	else if (str[i] == 'L' && type->size == '0')
-		type->size = 'L';
-	else if (str[i] == 'h' && type->size == '0' && (count =
-				ft_count_words(str + i, 'h')))
-		type->size = (count % 2 == 0) ? 'b' : 'h';
+	if (type->c == 'f' && str[i] == 'L' && (type->size = 'L'))
+		return ;
+	else if (str[i] == 'l' && type->size != 'L' && type->size != 'a' &&
+		type->size != 'l' && (count = ft_count_words(str + i, 'l')))
+		type->size = (count % 2) ? 'l' : 'a';
+	else if (str[i] == 'h' && type->size != 'a' && type->size != 'L' &&
+		type->size != 'l' && type->size != 'b' && type->size != 'h' &&
+		(count = ft_count_words(str + i, 'h')))
+		type->size = (count % 2) ? 'h' : 'b';	
 }
 
 
 static void		ft_get_prec_padd(t_conv *type, char *str, int *i) //padding, precision
 {
-	if (str[*i] == '.' && type->precision == 0)
+	if (str[*i] == '.')
 	{
 		*i += 1;
 		type->precision = ft_patoi(str, i);
 	}
-	else if (str[*i] == '.' && type->precision != 0)
-	{
-		*i += 1;
-		ft_patoi(str, i);
-	}
-	else if (ft_isdigit(str[*i]) && (str[*i] - '0') > 0 && type->padding
-		== 0)
+	else if (ft_isdigit(str[*i]) && (str[*i] - '0') > 0)
 		type->padding = ft_patoi(str, i);
 	else
 		ft_get_size(type, str, *i);	
@@ -51,7 +46,6 @@ static void			ft_get_options(char *format, t_conv *type, int offset)
 {
 	int 			i; // a stands for ll  and b for hh
 	char			*str;
-	int				nbr;
 
 	i = -1;
 	if (!(str = (char*)ft_memcpy((void*)ft_strnew(offset), (void*)format,
@@ -82,6 +76,7 @@ static char		*ft_parse_conv(char *format, va_list arg)
 	unsigned int		i;
 	t_conv				*type;
 
+	o = NULL;
 	if (*format == '%')
 		ft_putchar('%');
 	else
@@ -98,9 +93,14 @@ static char		*ft_parse_conv(char *format, va_list arg)
 			}
 		}
 		if (o != NULL)
+		{
 			type->c = *o;
-		ft_get_options(format, type, offset);
-		format += offset;
+			ft_get_options(format, type, offset);
+			ft_fetch_arg(type, arg);
+			format += offset;
+		}
+		else
+			format--;
 	}
 	return (format);
 }

@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_replace.c                                       :+:      :+:    :+:   */
+/*   ft_strccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/22 20:04:22 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/10 05:33:14 by rkamegne         ###   ########.fr       */
+/*   Created: 2019/04/08 15:27:44 by rkamegne          #+#    #+#             */
+/*   Updated: 2019/04/08 15:28:01 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_replace(char *str, int c, int b)
+char	*ft_strccpy(char *src, size_t len)
 {
-	int		i;
-	char	*s;
+	size_t	i;
+	char	*dst;
 
-	i = 0;
-	s = NULL;
-	if (str == NULL)
-		return (NULL);
-	if (!(s = (char*)malloc(sizeof(char) * ft_strlen(str) + 1)))
-		return (NULL);
-	while (str[i] != '\0')
-	{
-		if (str[i] == c)
-			s[i] = b;
-		else
-			s[i] = str[i];
-		i++;
-	}
-	s[i] = '\0';
-	return (s);
+	i = -1;
+	if (!(dst = ft_strnew(ft_strlen(src))))
+		exit(EXIT_FAILURE);
+	while (++i < len && src[i])
+		dst[i] = src[i];
+	dst[i] = '\0';
+	return (dst);
 }

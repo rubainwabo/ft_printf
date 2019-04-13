@@ -28,12 +28,41 @@ int		ft_patoi(char *str, int *offset)
 	return (nbr);
 }
 
+void	ft_putrev_char(unsigned char c, char *strp, t_conv *type)
+{
+	if (!type->m)
+	{
+		ft_putstr(strp);
+		ft_putchar(c);
+	}
+	else
+	{
+		ft_putchar(c);
+		ft_putstr(strp);
+	}
+}
+
+void	ft_putrev_str(char *str, char *strp, t_conv *type)
+{
+	if (type->m)
+	{
+		ft_putstr(str);
+		ft_putstr(strp);
+	}
+	else
+	{
+		ft_putstr(strp);
+		ft_putstr(str);
+	}
+}
+
+
 void	ft_init(t_conv **type)
 {
 	if (!(*type = (t_conv*)malloc(sizeof(**type))))
 		exit(EXIT_FAILURE);
 	(*type)->c = '0';
-	(*type)->precision = 0;
+	(*type)->precision = -1;
 	(*type)->padding = 0;
 	(*type)->size = '0';
 	(*type)->s = 0;

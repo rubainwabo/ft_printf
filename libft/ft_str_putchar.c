@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_replace.c                                       :+:      :+:    :+:   */
+/*   ft_str_putchar.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/22 20:04:22 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/10 05:33:14 by rkamegne         ###   ########.fr       */
+/*   Created: 2019/04/08 15:30:43 by rkamegne          #+#    #+#             */
+/*   Updated: 2019/04/08 15:39:39 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_replace(char *str, int c, int b)
+char	*ft_str_putchar(int c, int len)
 {
 	int		i;
 	char	*s;
 
-	i = 0;
-	s = NULL;
-	if (str == NULL)
-		return (NULL);
-	if (!(s = (char*)malloc(sizeof(char) * ft_strlen(str) + 1)))
-		return (NULL);
-	while (str[i] != '\0')
-	{
-		if (str[i] == c)
-			s[i] = b;
-		else
-			s[i] = str[i];
-		i++;
-	}
+	i = -1;
+	if (!(s = ft_strnew(len)))
+		exit(EXIT_FAILURE);
+	while (++i < len)
+		s[i] = c;
 	s[i] = '\0';
 	return (s);
 }

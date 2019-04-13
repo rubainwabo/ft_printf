@@ -6,7 +6,7 @@
 /*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 18:14:37 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/06 18:15:43 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/04/08 15:27:09 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strchr_alpha(const char *s, int c)
 		if (s[i] == c)
 			return ((char*)&s[i]);
 		if (ft_isalpha_spec(s[i]))
-			break;
+			break ;
 		i++;
 	}
 	if (c == 0)

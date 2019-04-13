@@ -6,7 +6,7 @@
 /*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 21:45:21 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/06 20:30:00 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/04/13 01:47:06 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
-char			*ft_itoa(int n);
+char			*ft_itoa(long long n);
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
 void			ft_putendl(char const *s);
@@ -98,4 +98,11 @@ char			*ft_strdup_at(char *str, char c);
 int				ft_atoi_base(const char *str, int str_base);
 int				ft_ispace(char c);
 char			*ft_strchr_alpha(const char *s, int c);
+char			*ft_strccpy(char *src, size_t len);
+char			*ft_str_putchar(int c, int len);
+char			*ft_utoa(unsigned long long n);
+long long		ft_abs(long long n);
+char			*ft_utoa_base(unsigned long long n, int base, int maj);
+int				ft_nb_len(unsigned long long n, int base);
+char			*ft_itoa_base(long long n, int base, int maj);
 #endif
