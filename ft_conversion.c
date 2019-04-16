@@ -6,7 +6,7 @@
 /*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 09:11:40 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/08 15:39:01 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/04/16 13:59:11 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,6 @@ void	ft_fetch_arg(t_conv *type, va_list arg)
 		conver.ptr = va_arg(arg, unsigned long long);
 		convert_pointer(conver.ptr, type);
 	}
+	else
+		ft_fecth_arg2(type, arg, conver);
 }

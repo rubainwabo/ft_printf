@@ -6,7 +6,7 @@
 /*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 18:15:55 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/07 18:15:59 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/04/16 13:59:53 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	ft_putrev_char(unsigned char c, char *strp, t_conv *type)
 		ft_putchar(c);
 		ft_putstr(strp);
 	}
+	free(strp);
 }
 
 void	ft_putrev_str(char *str, char *strp, t_conv *type)
@@ -54,6 +55,8 @@ void	ft_putrev_str(char *str, char *strp, t_conv *type)
 		ft_putstr(strp);
 		ft_putstr(str);
 	}
+	free(strp);
+	free(str);
 }
 
 

@@ -83,8 +83,8 @@ int 	main(void)
 	printf("---libc string = %10p\n", toto);
 	ft_printf("---mine string = %0.29s\n", toto);
 	printf("---libc string = %0.29s\n", toto);
-	ft_printf("---mine string = %-40 .10p\n", toto);
-	printf("---libc string = %-40 .10p\n",  toto);
+	ft_printf("---mine string = %-1 .10p\n", toto);
+	printf("---libc string = %-1 .10p\n",  toto);
 	ft_printf("---mine string = %040 .03p\n", "ab");
 	printf("---libc string = %040.03p\n", "ab");
 	return (0);
