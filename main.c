@@ -87,5 +87,11 @@ int 	main(void)
 	printf("---libc string = %-1 .10p\n",  toto);
 	ft_printf("---mine string = %040 .03p\n", "ab");
 	printf("---libc string = %040.03p\n", "ab");
+
+	ft_printf("---------INTEGERS---------------\n\n");
+	ft_printf("my number = %.10d\n", 10);
+	printf("printf number = %.10d\n", 10);
+	ft_printf("my number = %+.d\n", 10);
+	printf("printf number = %+.d\n", 10);
 	return (0);
 }

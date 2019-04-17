@@ -5,41 +5,28 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/04/06 02:03:49 by rkamegne          #+#    #+#              #
-#    Updated: 2019/04/13 01:44:49 by rkamegne         ###   ########.fr        #
+#    Created: 2018/10/18 18:23:24 by rkamegne          #+#    #+#              #
+#    Updated: 2019/04/10 05:32:37 by rkamegne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
-SRC = ft_conversion.c ft_printf.c ft_parse.c ft_utils.c ft_conversion2.c 
-MAIN = main.c
-OBJ = $(SRC:.c=.o) 
-SRC_LFT = $(wildcard libft/*.c)
-OBJ_LFT = $(SRC_LFT:.c=.o)
-INC = libftprintf.h
-INC_LFT = $(wildcard libft/*.h)
-CFLAGS = -Wall -Werror -Wextra
+SRC = $(wildcard *.c)
+NAME = libft.a
+OBJ = $(SRC:.c=.o)
+CFLAGS = -Wall -Wextra -Werror
 CC = gcc
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(INC) $(OBJ_LFT) $(INC_LFT)
-	@make -C libft/ 
-	@ar -rcs $(NAME) $(OBJ) $(OBJ_LFT)
-	@ranlib $(NAME)
+$(NAME):$(OBJ)
+	@$(CC) $(CFLAGS) -c $(SRC)
+	@ar cs $(NAME)  $(OBJ) 
 
 clean:
-	@make -C libft/ clean
 	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	@make -C libft/ fclean
-	@/bin/rm -f $(NAME)
 
 re: fclean all
 
-debug: 
-	make
-	gcc $(MAIN) -o printf $(NAME)
-
-.PHONY : all clean fclean re
+.PHONY : fclean clean all re

@@ -11,13 +11,12 @@
 # **************************************************************************** #
 
 SRC = $(wildcard *.c)
-
 OBJ = $(SRC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
 CC = gcc
 
 all: $(OBJ)
-	@$(CC) $(CFLAGS) -c $(SRC) 
+	@$(CC) $(CFLAGS) -c $(SRC)
 
 clean:
 	@/bin/rm -f $(OBJ)
