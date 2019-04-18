@@ -6,7 +6,7 @@
 /*   By: rkamegne <rkamegne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:31:11 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/16 12:10:43 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/04/18 13:48:11 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct 		s_type
 	int					nbr;
 	char				*str;
 	unsigned long long	ptr;
-	char			sign;
+	char				sign;
 }					t_type;
 
 void	ft_init(t_conv **type);
@@ -46,7 +46,7 @@ int		ft_patoi(char *str, int *offset);
 void	ft_putrev_char(unsigned char, char *str, t_conv *type);
 void	ft_putrev_str(char *str, char *strp, t_conv *type);
 void	ft_fetch_arg(t_conv *type, va_list arg);
-void	ft_fetch_arg_next(t_conv *type, va_list arg, t_type var);
+void	ft_fetch_arg_next(t_conv *type, va_list arg);
 void	ft_parse(const char *restrict format, va_list arg);
 int		ft_printf(const char * restrict format, ...);
 #endif

@@ -6,7 +6,7 @@
 /*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 09:11:40 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/16 13:59:11 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/04/18 13:46:49 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	convert_pointer(unsigned long long ptr, t_conv *type)
 		ft_putstr(str);
 }
 
-void	convert_int(t_type var, t_conv *type)
+/*void	convert_int(t_type var, t_conv *type)
 {
 	char	*str;
 	char	*tmp;
@@ -114,7 +114,7 @@ void	ft_fecth_arg2(t_conv *type, va_list arg, t_type var)
 		var.nbr = va_arg(arg, int);
 		convert_int(var, type);
 	}
-}
+}*/
 
 void	ft_fetch_arg(t_conv *type, va_list arg)
 {
@@ -136,5 +136,5 @@ void	ft_fetch_arg(t_conv *type, va_list arg)
 		convert_pointer(var.ptr, type);
 	}
 	else
-		ft_fetch_arg_next(type, arg, var);
+		ft_fetch_arg_next(type, arg);
 }
