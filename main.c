@@ -89,9 +89,9 @@ int 	main(void)
 	printf("---libc string = %040.03p\n", "ab");
 
 	ft_printf("---------INTEGERS---------------\n\n");
-	ft_printf("my number = %+.10d\n", 10);
-	printf("printf number = %+.10d\n", 10);
-	ft_printf("my number = %+.3d\n", -10);
-	printf("printf number = %+.3d\n", -10);
+	ft_printf("my number = %+8d\n", 10);
+	printf("printf number = %+8d\n", 10);
+	ft_printf("my number = %5d\n", -10);
+	printf("printf number = %5d\n", -10);
 	return (0);
 }

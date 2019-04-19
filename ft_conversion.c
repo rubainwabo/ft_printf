@@ -78,51 +78,13 @@ void	convert_pointer(unsigned long long ptr, t_conv *type)
 		ft_putstr(str);
 }
 
-/*void	convert_int(t_type var, t_conv *type)
-{
-	char	*str;
-	char	*tmp;
-	char	*tmp1;
-	int	len;
-
-	len = ft_nb_len(var.nbr, 10);
-	str = ft_itoa(var.nbr);
-	if (type->precision > -1 && type->precision > len)
-	{
-		tmp = ft_str_putchar('0', type->precision - len);
-		tmp1 = str;
-		if (var.nbr < 0)
-			var.sign = '-';
-		else
-			var.sign = (type->p) ? '+' : '0';
-		str = (var.sign != '0') ? ft_strjoin(tmp, str + 1) : ft_strjoin(tmp, str);
-		free(tmp);
-		free(tmp1);
-		tmp = ft_str_putchar(var.sign, 1);
-		ft_strcat(tmp, str);
-		free(tmp);
-	}
-	ft_putstr(str);
-	free(str);
-}
-	
-
-void	ft_fecth_arg2(t_conv *type, va_list arg, t_type var)
-{
-	if (type->c == 'd')
-	{
-		var.nbr = va_arg(arg, int);
-		convert_int(var, type);
-	}
-}*/
-
 void	ft_fetch_arg(t_conv *type, va_list arg)
 {
 	t_type	var;
 
 	if (type->c == 'c')
 	{
-		var.val = va_arg(arg, unsigned int);
+		var.val = va_arg(arg, uintmax_t);
 		convert_char((unsigned char)var.val, type);
 	}
 	else if (type->c == 's')

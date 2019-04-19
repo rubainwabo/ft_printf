@@ -27,7 +27,7 @@ int		main(void)
 
 	printf("----TEST OF THE DOIUXx CONVERSION----\n");
 
-	printf("first integer = %.1d\n", 0);
-	printf("second integer =% 030.6d\n", -12000);
-	printf("value of the long double max %Lf\n", LDBL_MAX);
+	printf("first integer =%5.6d\n", 0);
+//	printf("second integer =% 030.6d\n", -12000);
+//	printf("value of the long double max %Lf\n", LDBL_MAX);
 }
