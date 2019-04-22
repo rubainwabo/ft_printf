@@ -85,5 +85,6 @@ int		ft_init(t_conv **type)
 	(*type)->p = 0;
 	(*type)->count = 0;
 	(*type)->base = 0;
+	(*type)->star = 0;
 	return (0);
 }

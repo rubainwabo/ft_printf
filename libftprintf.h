@@ -33,6 +33,7 @@ typedef struct		s_conv
 	int				s;
 	int				count;
 	int				base;
+	int				star;
 }					t_conv;
 
 int					ft_init(t_conv **type);

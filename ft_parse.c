@@ -34,20 +34,30 @@ static	void	ft_get_size(t_conv *type, char *format, int i)
 		type->size = (count % 2) ? 'h' : 'b';
 }
 
-static	void	ft_get_prec_padd(t_conv *type, char *format, int *i)
+static	void	ft_get_prec_padd(t_conv *type, char *format, int *i, va_list arg)
 {
-	if (format[*i] == '.')
+	if (format[*i] == '.' && type->star != 2)
 	{
 		*i += 1;
 		type->precision = ft_patoi(format, i);
 	}
-	else if (ft_isdigit(format[*i]) && (format[*i] - '0') > 0)
+	else if (type->star != 1 && ft_isdigit(format[*i]) && (format[*i] - '0') > 0)
 		type->padding = ft_patoi(format, i);
+	else if (format[*i] == '*')
+	{
+		type->star = 1;
+		type->padding = va_arg(arg, int);
+	}
+	else if (format[*i] == '*' && format[*i + 1] == '.')
+	{
+		type->star = 2;
+		type->precision = va_arg(arg, int);
+	}    
 	else
 		ft_get_size(type, format, *i);
 }
 
-static	void	ft_get_options(char *format, t_conv *type, int offset)
+static	void	ft_get_options(char *format, t_conv *type, int offset, va_list arg)
 {
 	int			i;
 
@@ -65,7 +75,7 @@ static	void	ft_get_options(char *format, t_conv *type, int offset)
 		else if (format[i] == '0')
 			type->z = 1;
 		else
-			ft_get_prec_padd(type, format, &i);
+			ft_get_prec_padd(type, format, &i, arg);
 	}
 }
 
@@ -89,7 +99,7 @@ static	char	*ft_parse_conv(char *format, va_list arg, t_conv *type)
 	if (o != NULL)
 	{
 		type->c = *o;
-		ft_get_options(format, type, offset);
+		ft_get_options(format, type, offset, arg);
 		ft_fetch_arg(type, arg);
 		format += offset;
 	}
