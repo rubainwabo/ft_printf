@@ -24,16 +24,18 @@ void	ft_padding_no_pre(t_type *var, t_conv *type, char *str)
 		type->m == 0) ? 48 : 32;
 		type->padding -= (type->s) ? var->len + 1 : var->len;
 		strp = ft_str_putchar(add, type->padding);
-		if (var->sign)
+		if (var->sign && type->m == 0)
 			strp = (add == 48) ? ft_strjoin(var->sign, strp) :
-			ft_strcat(strp, var->sign);
-		strp = (type->s) ? ft_strcat(" ", strp) : strp;
+			ft_strcat(strp, var->sign); // free inside strcat and strjoin here
+		else if (var->sign && type->m)
+			str = ft_strjoin(var->sign, str);
+		(type->s) ? ft_putchar(' ') : 0;
 		ft_putrev_str(str, strp, type);
 	}
 	else
 	{
 		str = (var->sign) ? ft_strjoin(var->sign, str) : str;
-		str = (type->s) ? ft_strjoin(" ", str) : str;
+		(type->s) ? ft_putchar(' ') : 0;
 		ft_putstr(str);
 	}
 }
@@ -44,16 +46,17 @@ void	ft_padding_pre(t_type *var, t_conv *type, char *str)
 	type->precision += (type->p || var->nbr < 0) ? 1 : 0;
 	if (type->padding > type->precision)
 	{
-		type->padding -= type->precision;
+		type->padding -= (type->s) ? type->precision + 1 : type->precision;
 		strp = ft_str_putchar(' ', type->padding);
 		str = (type->p || var->nbr < 0) ? ft_strjoin(var->sign, str)
 		: str;
+		(type->s) ? ft_putchar(' ') : 0;
 		ft_putrev_str(str, strp, type);
 	}
 	else
 	{
 		str = (var->sign) ? ft_strjoin(var->sign, str) : str;
-		str = (type->s) ? ft_strjoin(" ", str) : str;
+		(type->s) ? ft_putchar(' ') : 0;
 		ft_putstr(str);
 	}
 }
@@ -68,7 +71,7 @@ char	*ft_check_sign(t_type *var, t_conv *type)
 	}
 	else
 		sign = (type->p) ? ft_str_putchar('+', 1) : NULL;
-	type->s = (type->p || type->m) ? 0 : type->s;
+	type->s = (type->p) ? 0 : type->s;
 	return (sign);
 }
 

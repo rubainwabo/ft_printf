@@ -28,5 +28,5 @@ int		main(void)
 	//printf("first integer =%5.6d\n", 0);
 //	printf("second integer =% 030.6d\n", -12000);
 //	printf("value of the long double max %Lf\n", LDBL_MAX);
-	printf("integer =% 05d\n", -12);
+	printf("integer =%- d\n", 12);
 }

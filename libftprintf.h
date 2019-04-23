@@ -43,13 +43,13 @@ typedef struct 		s_type
 	int					len;
 }					t_type;
 
-void	ft_init(t_conv **type);
+int		ft_init(t_conv **type);
 int		ft_patoi(char *str, int *offset);
 void	ft_free(char *s1, char *s2);
 void	ft_putrev_char(unsigned char, char *str, t_conv *type);
 void	ft_putrev_str(char *str, char *strp, t_conv *type);
 void	ft_fetch_arg(t_conv *type, va_list arg);
 void	ft_fetch_arg_next(t_conv *type, va_list arg);
-void	ft_parse(const char *restrict format, va_list arg);
+int		ft_parse(const char *restrict format, va_list arg);
 int		ft_printf(const char * restrict format, ...);
 #endif

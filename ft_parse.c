@@ -77,7 +77,8 @@ static char		*ft_parse_conv(char *format, va_list arg)
 	t_conv				*type;
 
 	o = NULL;
-	ft_init(&type);
+	if (ft_init(&type) == -1)
+		return (NULL);
 	i = -1;
 	offset = 0;
 	while (TYPES[++i])
@@ -100,14 +101,18 @@ static char		*ft_parse_conv(char *format, va_list arg)
 	return (format);
 }
 
-void		ft_parse(const char *restrict format, va_list arg)
+int		ft_parse(const char *restrict format, va_list arg)
 {
 	while (*format)
 	{
 		if (*format == '%')
-			format = ft_parse_conv((char*)(format + 1), arg);
+		{
+			if (!(format = ft_parse_conv((char*)(format + 1), arg)))
+				return (-1);
+		}
 		else
 			ft_putchar(*format);
 		format++;
 	}
+	return (1);
 }

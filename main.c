@@ -83,17 +83,21 @@ int 	main(void)
 	printf("---libc string = %10p\n", toto);
 	ft_printf("---mine string = %0.29s\n", toto);
 	printf("---libc string = %0.29s\n", toto);
-	ft_printf("---mine string = %-1 .10p\n", toto);
-	printf("---libc string = %-1 .10p\n",  toto);
+	ft_printf("---mine string = %.5p\n", toto);
+	printf("---libc string = %.5p\n",  toto);
 	ft_printf("---mine string = %040 .03p\n", "ab");
 	printf("---libc string = %040.03p\n", "ab");
 
 	ft_printf("---------INTEGERS---------------\n\n");
-	ft_printf("mine   number = %+08.10d\n", -10123);
-	printf("printf number = %+08.10d\n", -10123);
+	ft_printf("mine   number = %-08.6d\n", -10123);
+	printf("printf number = %-08.6d\n", -10123);
 	ft_printf("mine   number =%5.2d\n", -10);
 	printf("printf number =%5.2d\n", -10);
-	ft_printf("mine   number =% 05.3d\n", 0);
-	printf("printf number =% 05.3d\n", 0);
+	ft_printf("mine   number =% 05d\n", 1);
+	printf("printf number =% 05d\n", 1);
+	ft_printf("mine   number =%010.2d\n", -10);
+	printf("printf number =%010.2d\n", -10);
+	ft_printf("mine   number =%0 5d\n", 15);
+	printf("printf number =%0 5d\n", 15);
 	return (0);
 }

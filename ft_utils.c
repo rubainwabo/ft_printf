@@ -65,10 +65,13 @@ void	ft_free(char *s1, char *s2)
 	free(s2);
 }
 
-void	ft_init(t_conv **type)
+int		ft_init(t_conv **type)
 {
 	if (!(*type = (t_conv*)malloc(sizeof(**type))))
-		exit(EXIT_FAILURE);
+	{
+		ft_putstr_fd("Malloc failed", 2);
+		return (-1);
+	}
 	(*type)->c = '0';
 	(*type)->precision = -1;
 	(*type)->padding = 0;
@@ -78,4 +81,5 @@ void	ft_init(t_conv **type)
 	(*type)->z = 0;
 	(*type)->h = 0;
 	(*type)->p = 0;
+	return (0);
 }
