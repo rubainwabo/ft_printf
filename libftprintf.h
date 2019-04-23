@@ -6,7 +6,7 @@
 /*   By: rkamegne <rkamegne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:31:11 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/18 13:48:11 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/04/20 19:00:05 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ typedef struct		s_conv
 
 typedef struct 		s_type
 {
-	uintmax_t	val;
-	int		nbr;
+	uintmax_t			val;
+	int					nbr;
 	char				*str;
 	unsigned long long	ptr;
-	char				sign;
+	char				*sign;
+	int					len;
 }					t_type;
 
 void	ft_init(t_conv **type);

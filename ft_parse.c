@@ -6,7 +6,7 @@
 /*   By: rkamegne <rkamegne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:24:13 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/16 11:31:17 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/04/20 19:31:30 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,31 +77,26 @@ static char		*ft_parse_conv(char *format, va_list arg)
 	t_conv				*type;
 
 	o = NULL;
-	if (*format == '%')
-		ft_putchar('%');
-	else
+	ft_init(&type);
+	i = -1;
+	offset = 0;
+	while (TYPES[++i])
 	{
-		ft_init(&type);
-		i = -1;
-		offset = 0;
-		while (TYPES[++i])
+		if ((o = ft_strchr_alpha(format, TYPES[i])))
 		{
-			if ((o = ft_strchr_alpha(format, TYPES[i])))
-			{
-				offset = o - format;
-				break;
-			}
+			offset = o - format;
+			break;
 		}
-		if (o != NULL)
-		{
-			type->c = *o;
-			ft_get_options(format, type, offset);
-			ft_fetch_arg(type, arg);
-			format += offset;
-		}
-		else
-			format--;
 	}
+	if (o != NULL)
+	{
+		type->c = *o;
+		ft_get_options(format, type, offset);
+		ft_fetch_arg(type, arg);
+		format += offset;
+	}
+	else
+		format--;
 	return (format);
 }
 
