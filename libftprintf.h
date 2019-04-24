@@ -33,21 +33,12 @@ typedef struct		s_conv
 	int				s; //space
 }					t_conv;
 
-typedef struct 		s_type
-{
-	uintmax_t			val;
-	int					nbr;
-	char				*str;
-	unsigned long long	ptr;
-	char				*sign;
-	int					len;
-}					t_type;
-
 int		ft_init(t_conv **type);
 int		ft_patoi(char *str, int *offset);
 void	ft_free(char *s1, char *s2);
 void	ft_putrev_char(unsigned char, char *str, t_conv *type);
 void	ft_putrev_str(char *str, char *strp, t_conv *type);
+void	convert_octal(unsigned int val, t_conv *type);
 void	ft_fetch_arg(t_conv *type, va_list arg);
 void	ft_fetch_arg_next(t_conv *type, va_list arg);
 int		ft_parse(const char *restrict format, va_list arg);

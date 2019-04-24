@@ -12,59 +12,60 @@
 
 #include "libftprintf.h"
 
-void	ft_padding_no_pre(t_type *var, t_conv *type, char *str)
+static void		ft_padding_no_pre(int nbr, char *sign, t_conv *type, char *str)
 {
 	char	*strp;
 	int		add;
+	int		len;
 
-	var->len += (type->p || var->nbr < 0) ? 1 : 0;
-	if (type->padding > var->len)
+	len = (type->p || nbr < 0) ? ft_strlen_err(str) + 1 :
+	ft_strlen_err(str) + 0;
+	if (type->padding > len)
 	{
-		add = (type->precision == -1 && type->z != 0 &&
-		type->m == 0) ? 48 : 32;
-		type->padding -= (type->s) ? var->len + 1 : var->len;
+		add = (type->precision == -1 && type->z != 0 && type->m == 0) ? 48 : 32;
+		type->padding -= (type->s) ? len + 1 : len;
 		strp = ft_str_putchar(add, type->padding);
-		if (var->sign && type->m == 0)
-			strp = (add == 48) ? ft_strjoin(var->sign, strp) :
-			ft_strcat(strp, var->sign); // free inside strcat and strjoin here
-		else if (var->sign && type->m)
-			str = ft_strjoin(var->sign, str);
+		if (sign && type->m == 0)
+			strp = (add == 48) ? ft_strjoin_free(sign, strp) :
+			ft_strjoin_free(strp, sign);
+		else if (sign && type->m)
+			str = ft_strjoin_free(sign, str);
 		(type->s) ? ft_putchar(' ') : 0;
 		ft_putrev_str(str, strp, type);
 	}
 	else
 	{
-		str = (var->sign) ? ft_strjoin(var->sign, str) : str;
+		str = (sign) ? ft_strjoin_free(sign, str) : str;
 		(type->s) ? ft_putchar(' ') : 0;
 		ft_putstr(str);
 	}
 }
-void	ft_padding_pre(t_type *var, t_conv *type, char *str)
+static void		ft_padding_pre(int nbr, char *sign, t_conv *type, char *str)
 {
 	char	*strp;
 
-	type->precision += (type->p || var->nbr < 0) ? 1 : 0;
+	type->precision += (type->p || nbr < 0) ? 1 : 0;
 	if (type->padding > type->precision)
 	{
 		type->padding -= (type->s) ? type->precision + 1 : type->precision;
 		strp = ft_str_putchar(' ', type->padding);
-		str = (type->p || var->nbr < 0) ? ft_strjoin(var->sign, str)
+		str = (type->p || nbr < 0) ? ft_strjoin_free(sign, str)
 		: str;
 		(type->s) ? ft_putchar(' ') : 0;
 		ft_putrev_str(str, strp, type);
 	}
 	else
 	{
-		str = (var->sign) ? ft_strjoin(var->sign, str) : str;
+		str = (sign) ? ft_strjoin_free(sign, str) : str;
 		(type->s) ? ft_putchar(' ') : 0;
 		ft_putstr(str);
 	}
 }
-char	*ft_check_sign(t_type *var, t_conv *type)
+static char		*ft_check_sign(int nbr, t_conv *type)
 {
 	char	*sign;
 
-	if (var->nbr < 0)
+	if (nbr < 0)
 	{
 		sign = ft_str_putchar('-', 1);
 		type->s = 0;
@@ -75,31 +76,45 @@ char	*ft_check_sign(t_type *var, t_conv *type)
 	return (sign);
 }
 
-void	convert_int(t_type *var, t_conv *type)
+void	convert_int(int nbr, t_conv *type)
 {
 	char	*str;
 	char	*tmp;
+	char	*sign;
+	int		len;
 
-	var->sign = ft_check_sign(var, type);
-	var->len = ft_nb_len(ft_abs(var->nbr), 10);
-	str = ft_itoa(ft_abs(var->nbr));
-	if (type->precision > var->len)
+	sign = ft_check_sign(nbr, type);
+	len = ft_nb_len(ft_abs(nbr), 10);
+	str = ft_itoa_base(ft_abs(nbr), 10, 0, len);
+	if (type->precision > len)
 	{
-		tmp = ft_str_putchar('0', (type->precision - var->len));
-		str = ft_strjoin(tmp, str);
-		ft_padding_pre(var, type, str);
+		tmp = ft_str_putchar('0', (type->precision - len));
+		str = ft_strjoin_free(tmp, str);
+		ft_padding_pre(nbr, sign, type, str);
 	}
 	else
-		ft_padding_no_pre(var, type, str);
+		(type->precision == 0 && nbr == 0) ? ft_padding_no_pre(nbr, sign, type, NULL)
+		: ft_padding_no_pre(nbr, sign, type, str);
 }
 
 void	ft_fetch_arg_next(t_conv *type, va_list arg)
 {
-	t_type	var;
+	unsigned int	val;
+	int				nbr;
 
 	if (type->c == 'd')
 	{
-		var.nbr = va_arg(arg, int);
-		convert_int(&var, type);
+		nbr = va_arg(arg, int);
+		convert_int(nbr, type);
+	}
+	else if (type->c == 'i')
+	{
+		nbr = va_arg(arg, int);
+		convert_int(nbr, type);
+	}
+	else if (type->c == 'o')
+	{
+		val = va_arg(arg, unsigned int);
+		convert_octal(val, type);
 	}
 }

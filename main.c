@@ -46,7 +46,7 @@ int 	main(void)
 	printf("plus : %d\n", type->p);
 	printf("minus : %d\n", type->m);
 	printf("hashtag : %d\n", type->h);*/
-/*	ft_printf("-------- CSP CONVERSION TEST --------\n\n");
+	ft_printf("-------- CSP CONVERSION TEST --------\n\n");
 	ft_printf("--------       CHAR          --------\n\n");
 	char	c = 49;
 	ft_printf("character = %+-.0c\n", c);
@@ -61,20 +61,19 @@ int 	main(void)
 	printf("---libc character with \'-\' + padding of 5 flag = %-5c\n", c);
 	ft_printf("character with \'-\' + 0 + padding of 5 flag = %-05c\n", c);
 	printf("---libc character with \'-\' + 0 + padding of 5 flag = %-05c\n", c);
-	ft_printf("--------     STRING         --------\n\n");*/
+	ft_printf("--------     STRING         --------\n\n");
 	char  *toto = "hi, this is my own printf don't laugh at it";
 	int   nbr = 10;
-	char  c = 'b';
-/*	ft_printf("---mine s.10tring = %0-.5 5s\n", toto);
-	printf("---libc s.10tring = %0-.5 5s\n", toto);*/
-/*	ft_printf("---mine string = %-49%s\n", toto);
+	ft_printf("---mine string = %.5s\n", toto);
+	printf("---libc string = %.5s\n", toto);
+	ft_printf("---mine string = %-49%s\n", toto);
 	printf("---libc string = %-49s\n", toto);
 	ft_printf("---mine string = %0 .29s\n", toto);
 	printf("---libc string = %0 .29s\n", toto);
 	ft_printf("---mine string = %-40 .10s\n", toto);
 	printf("---libc string = %-40 .10s\n", toto);
 	ft_printf("---mine string = %040 .-3s\n", "ab");
-	printf("---libc string = %040 .-3s\n", "ab");*/
+	printf("---libc string = %040 .-3s\n", "ab");
 	//ft_printf("here!!!\n");ft_putendl(ft_strccpy(toto, 0));
 
 	ft_printf("----------  POINTER    --------------\n\n");
@@ -93,11 +92,40 @@ int 	main(void)
 	printf("printf number = %-08.6d\n", -10123);
 	ft_printf("mine   number =%5.2d\n", -10);
 	printf("printf number =%5.2d\n", -10);
-	ft_printf("mine   number =% 05d\n", 1);
-	printf("printf number =% 05d\n", 1);
+	ft_printf("mine   number =%-0+5d\n", 0);
+	printf("printf number =%-0+5d\n", 0);
 	ft_printf("mine   number =%010.2d\n", -10);
 	printf("printf number =%010.2d\n", -10);
 	ft_printf("mine   number =%0 5d\n", 15);
 	printf("printf number =%0 5d\n", 15);
+	ft_printf("mine   number =% d\n", 123);
+	printf("printf number =% d\n", 123);
+	ft_printf("mine   number =% 05d\n", 10);
+	printf("printf number =% 05d\n", 10);
+	ft_printf("mine   number = %-9.6d\n", 1);
+	printf("printf number = %-9.6d\n", 1);
+	ft_printf("mine   number =% 010d\n", -10);
+	printf("printf number =% 010d\n", -10);
+	ft_printf("mine   number =%-0 5d\n", -15);
+	printf("printf number =%-0 5d\n", -15);
+	ft_printf("------OCTAL CONVERSION--------\n\n");
+	ft_printf("mine   number =%5.2o\n", -10);
+	printf("printf number =%5.2o\n", -10);
+	ft_printf("mine   number =%-0+5o\n", 0);
+	printf("printf number =%-0+5o\n", 0);
+	ft_printf("mine   number =%010.2o\n", -10);
+	printf("printf number =%010.2o\n", -10);
+	ft_printf("mine   number =%0 5o\n", 15);
+	printf("printf number =%0 5o\n", 15);
+	ft_printf("mine   number =% o\n", 123);
+	printf("printf number =% o\n", 123);
+	ft_printf("mine   number =% 05o\n", 10);
+	printf("printf number =% 05o\n", 10);
+	ft_printf("mine   number = %05o\n", 0);
+	printf("printf number = %05o\n", 0);
+	ft_printf("mine   number =%015o\n", -10);
+	printf("printf number =%015o\n", -10);
+	ft_printf("mine   number =%#20o\n", -15);
+	printf("printf number =%#20o\n", -15);
 	return (0);
 }

@@ -14,16 +14,14 @@
 
 void	convert_char(unsigned char c, t_conv *type)
 {
-	char	str[type->padding];
+	char	*str;
 	char	add;
 
-	str[type->padding - 1] = '\0';
 	if (type->padding)
 	{
 		add = (type->z != 0 && type->m == 0) ? '0' : ' ';
 		type->padding--;
-		while (--type->padding >= 0)
-			str[type->padding] = add;
+		str = ft_str_putchar(add, type->padding);
 		ft_putrev_char(c, str, type);
 	}
 	else
@@ -63,7 +61,7 @@ void	convert_pointer(unsigned long long ptr, t_conv *type)
 	int		len;
 	char 	*tmp;
 
-	tmp = ft_utoa_base(ptr, 16, 0);
+	tmp = ft_utoa_base(ptr, 16, 0, ft_nb_len(ptr, 16));
 	str = ft_strjoin("0x", tmp);
 	len = ft_strlen_err(str);
 	ft_strdel(&tmp);
@@ -80,22 +78,24 @@ void	convert_pointer(unsigned long long ptr, t_conv *type)
 
 void	ft_fetch_arg(t_conv *type, va_list arg)
 {
-	t_type	var;
+	unsigned int		val;
+	char				*str;
+	unsigned long long	ptr;
 
 	if (type->c == 'c')
 	{
-		var.val = va_arg(arg, uintmax_t);
-		convert_char((unsigned char)var.val, type);
+		val = va_arg(arg, unsigned int);
+		convert_char((unsigned char)val, type);
 	}
 	else if (type->c == 's')
 	{
-		var.str = va_arg(arg, char*);
-		convert_string(var.str, type);
+		str = va_arg(arg, char*);
+		convert_string(str, type);
 	}
 	else if (type->c == 'p')
 	{
-		var.ptr = va_arg(arg, unsigned long long);
-		convert_pointer(var.ptr, type);
+		ptr = va_arg(arg, unsigned long long);
+		convert_pointer(ptr, type);
 	}
 	else
 		ft_fetch_arg_next(type, arg);

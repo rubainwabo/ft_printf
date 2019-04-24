@@ -102,7 +102,9 @@ char			*ft_strccpy(char *src, size_t len);
 char			*ft_str_putchar(int c, int len);
 char			*ft_utoa(unsigned long long n);
 long long		ft_abs(long long n);
-char			*ft_utoa_base(unsigned long long n, int base, int maj);
+char			*ft_utoa_base(unsigned long long n, int base, int maj, int len);
 int				ft_nb_len(unsigned long long n, int base);
-char			*ft_itoa_base(long long n, int base, int maj);
+char			*ft_itoa_base(long long n, int base, int maj, int len);
+char			*ft_strjoin_free(char *s1, char *s2);
+char			*ft_strcat_free(char *s1, char *s2);
 #endif

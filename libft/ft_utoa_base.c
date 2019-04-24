@@ -12,15 +12,15 @@
 
 #include "libft.h"
 
-char	*ft_itoa_base(long long n, int base, int maj)
+char	*ft_itoa_base(long long n, int base, int maj, int len)
 {
 	char				*str;
 	char				*temp;
 	unsigned long long	nbr;
 
 	nbr = n;
-	temp = (base == 10) ? ft_utoa_base(ft_abs(n), base, maj) :
-	ft_utoa_base(nbr, base, maj);
+	temp = (base == 10) ? ft_utoa_base(ft_abs(n), base, maj, len) :
+	ft_utoa_base(nbr, base, maj, len);
 	if (n < 0 && base == 10)
 	{
 		str = ft_strjoin("-", temp);
@@ -30,15 +30,13 @@ char	*ft_itoa_base(long long n, int base, int maj)
 	return (temp);
 }
 
-char	*ft_utoa_base(unsigned long long n, int base, int maj)
+char	*ft_utoa_base(unsigned long long n, int base, int maj, int len)
 {
 	char	*str;
 	int		i;
-	int		len;
 	char	c;
 
 	c = (maj) ? 'A' : 'a';
-	len = ft_nb_len(n, base);
 	if (!(str = (char*)malloc(sizeof(char) * len + 1)))
 		return (NULL);
 	str[len] = '\0';
