@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-static void		ft_padding_no_pre(int nbr, char *sign, t_conv *type, char *str)
+static void		ft_padding_no_pre(intmax_t nbr, char *sign, t_conv *type, char *str)
 {
 	char	*strp;
 	int		add;
@@ -61,7 +61,7 @@ static void		ft_padding_pre(int nbr, char *sign, t_conv *type, char *str)
 		ft_putstr(str);
 	}
 }
-static char		*ft_check_sign(int nbr, t_conv *type)
+static char		*ft_check_sign(intmax_t nbr, t_conv *type)
 {
 	char	*sign;
 
@@ -76,7 +76,7 @@ static char		*ft_check_sign(int nbr, t_conv *type)
 	return (sign);
 }
 
-void	convert_int(int nbr, t_conv *type)
+void	convert_int(intmax_t nbr, t_conv *type)
 {
 	char	*str;
 	char	*tmp;
@@ -97,10 +97,10 @@ void	convert_int(int nbr, t_conv *type)
 		: ft_padding_no_pre(nbr, sign, type, str);
 }
 
-void	ft_fetch_arg_next(t_conv *type, va_list arg)
+void	ft_fetch_arg2(t_conv *type, va_list arg)
 {
-	unsigned int	val;
-	int				nbr;
+	uintmax_t		val;
+	intmax_t		nbr;
 
 	if (type->c == 'd')
 	{
@@ -115,6 +115,8 @@ void	ft_fetch_arg_next(t_conv *type, va_list arg)
 	else if (type->c == 'o')
 	{
 		val = va_arg(arg, unsigned int);
-		convert_octal(val, type);
+		convert_unsigned(val, type, 8);
 	}
+    else
+        ft_fecth_arg3(type, arg);    
 }

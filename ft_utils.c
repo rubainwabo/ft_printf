@@ -59,12 +59,6 @@ void	ft_putrev_str(char *str, char *strp, t_conv *type)
 	free(str);
 }
 
-void	ft_free(char *s1, char *s2)
-{
-	free(s1);
-	free(s2);
-}
-
 int		ft_init(t_conv **type)
 {
 	if (!(*type = (t_conv*)malloc(sizeof(**type))))

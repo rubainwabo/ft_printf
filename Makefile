@@ -11,8 +11,8 @@
 # **************************************************************************** #
 
 NAME = libftprintf.a
-SRC = ft_conversion.c ft_printf.c ft_parse.c ft_utils.c ft_conversion2.c \
-	ft_conversion3.c
+SRC = ft_conver_csp.c ft_printf.c ft_parse.c ft_utils.c ft_conver_numbers.c \
+	ft_conver_unumbers.c ft_conver_unumbers2.c
 MAIN = main.c
 OBJ = $(SRC:.c=.o) 
 SRC_LFT = $(wildcard libft/*.c)

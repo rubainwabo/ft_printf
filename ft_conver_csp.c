@@ -98,5 +98,5 @@ void	ft_fetch_arg(t_conv *type, va_list arg)
 		convert_pointer(ptr, type);
 	}
 	else
-		ft_fetch_arg_next(type, arg);
+		ft_fetch_arg2(type, arg);
 }
