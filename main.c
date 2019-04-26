@@ -15,8 +15,8 @@
 
 int 	main(void)
 {
-	// Tests for printf
-/*	ft_printf("-------- FT_PRINTF PARSING TEST --------\n\n");
+	//tests for printf
+/*	ft_printf("-------- FT_PRINTF PARSING TEST --------\n %s\n");
 	ft_printf("percent percent managed --- %%%%ffff%%%%%%%+++99d\n");
 	ft_printf("test5: %055.1111110d\n");
 	ft_printf("test1 : %+-+++#x ioi %lold %###--u % ++ hhh .52 25s\n");
@@ -26,7 +26,7 @@ int 	main(void)
 	ft_printf("test5: %++hhhhhllfwfffffffffffff+d eeeeeeeeeeeeeeeee\n");
 /*	ft_printf("test6: string without any problem!\n");
 	ft_printf("test7: %++++----o obliged to %+++++\n");
-	// printf of the libc
+	printf of the libc
 	printf("-------- PRINTF PARSING TEST --------\n\n");
 	printf("test1 : print of a=%++++--de hello and %++++---X this guy is moving %4u ii\n");
 	printf("test2: %-- 1d this works? Yes i guess %1++defef\n");
@@ -46,105 +46,134 @@ int 	main(void)
 	printf("plus : %d\n", type->p);
 	printf("minus : %d\n", type->m);
 	printf("hashtag : %d\n", type->h);*/
-	// ft_printf("-------- CSP CONVERSION TEST --------\n\n");
-	// ft_printf("--------       CHAR          --------\n\n");
-	// char	c = 49;
-	// ft_printf("character = %+-.0c\n", c);
-	// printf("---libc character = %+-.0c\n", c);
-	// ft_printf("character with 0 flag = %0c\n", c);
-	// printf("---libc character with 0 flag = %0c\n", c);
-	// ft_printf("character with - flag = %-c\n", c);
-	// printf("---libc character with - flag = %-c\n", c);
-	// ft_printf("character with 0 + padding of 5 flag = %05c\n", c);
-	// printf("---libc character with 0 + padding of 5 flag = %05c\n", c);
-	// ft_printf("character with \'-\' + padding of 5 flag = %-5c\n", c);
-	// printf("---libc character with \'-\' + padding of 5 flag = %-5c\n", c);
-	// ft_printf("character with \'-\' + 0 + padding of 5 flag = %-05c\n", c);
-	// printf("---libc character with \'-\' + 0 + padding of 5 flag = %-05c\n", c);
-	// ft_printf("--------     STRING         --------\n\n");
-	// char  *toto = "hi, this is my own printf don't laugh at it";
-	// int   nbr = 10;
-	// ft_printf("---mine string = %.5s\n", toto);
-	// printf("---libc string = %.5s\n", toto);
-	// ft_printf("---mine string = %-49%s\n", toto);
-	// printf("---libc string = %-49s\n", toto);
-	// ft_printf("---mine string = %0 .29s\n", toto);
-	// printf("---libc string = %0 .29s\n", toto);
-	// ft_printf("---mine string = %-40 .10s\n", toto);
-	// printf("---libc string = %-40 .10s\n", toto);
-	// ft_printf("---mine string = %040 .-3s\n", "ab");
-	// printf("---libc string = %040 .-3s\n", "ab");
-	// //ft_printf("here!!!\n");ft_putendl(ft_strccpy(toto, 0));
+	ft_printf("-------- CSP CONVERSION TEST --------\n\n");
+	
+	ft_printf("--------       CHAR          --------\n\n");
+	char	c = 49;
+	ft_printf("character = %+-.0c\n", c);
+	printf("---libc character = %+-.0c\n", c);
+	ft_printf("character with 0 flag = %0c\n", c);
+	printf("---libc character with 0 flag = %0c\n", c);
+	ft_printf("character with - flag = %-c\n", c);
+	printf("---libc character with - flag = %-c\n", c);
+	ft_printf("character with 0 + padding of 5 flag = %05c\n", c);
+	printf("---libc character with 0 + padding of 5 flag = %05c\n", c);
+	ft_printf("character with \'-\' + padding of 5 flag = %-5c\n", c);
+	printf("---libc character with \'-\' + padding of 5 flag = %-5c\n", c);
+	ft_printf("character with \'-\' + 0 + padding of 5 flag = %-05c\n", c);
+	printf("---libc character with \'-\' + 0 + padding of 5 flag = %-05c\n", c);
 
-	// ft_printf("----------  POINTER    --------------\n\n");
+	ft_printf("--------     STRING         --------\n\n");
 
-	// ft_printf("---mine string = %10p\n", toto);
-	// printf("---libc string = %10p\n", toto);
-	// ft_printf("---mine string = %0.29s\n", toto);
-	// printf("---libc string = %0.29s\n", toto);
-	// ft_printf("---mine string = %.5p\n", toto);
-	// printf("---libc string = %.5p\n",  toto);
-	// ft_printf("---mine string = %040 .03p\n", "ab");
-	// printf("---libc string = %040.03p\n", "ab");
+	char  *toto = "hi, this is my own printf don't laugh at it";
+	int   nbr = 10;
+	ft_printf("---mine string = %.5s\n", toto, "spaces to make sure!");
+	printf("---libc string = %.5s\n", toto, "spaces to make sure!");
+	ft_printf("---mine string = %-49s\n", toto, "spaces to make sure!");
+	printf("---libc string = %-49s\n", toto, "spaces to make sure!");
+	ft_printf("---mine string = %0 .29s\n", toto, "spaces to make sure!");
+	printf("---libc string = %0 .29s\,n", toto, "spaces to make sure!");
+	ft_printf("---mine string = %-40 .10s\n", toto, "spaces to make sure!");
+	printf("---libc string = %-40 .10s\n", toto, "spaces to make sure!");
+	ft_printf("---mine string = %040 .-3s\n", "ab", "spaces to make sure!");
+	printf("---libc string = %040 .-3s\n", "ab", "spaces to make sure!");
+	//ft_printf("he,re!!!\n", "spaces to make sure!");ft_putendl(ft_strccpy(,toto, 0), "spaces to make sure!");
 
-	// ft_printf("---------INTEGERS---------------\n\n");
-	// ft_printf("mine   number = %-08.6d\n", -10123);
-	// printf("printf number = %-08.6d\n", -10123);
-	// ft_printf("mine   number =%5.2d\n", -10);
-	// printf("printf number =%5.2d\n", -10);
-	// ft_printf("mine   number =%-0+5d\n", 0);
-	// printf("printf number =%-0+5d\n", 0);
-	// ft_printf("mine   number =%010.2d\n", -10);
-	// printf("printf number =%010.2d\n", -10);
-	// ft_printf("mine   number =%0 5d\n", 15);
-	// printf("printf number =%0 5d\n", 15);
-	// ft_printf("mine   number =% d\n", 123);
-	// printf("printf number =% d\n", 123);
-	// ft_printf("mine   number =% 05d\n", 10);
-	// printf("printf number =% 05d\n", 10);
-	// ft_printf("mine   number = %-9.6d\n", 1);
-	// printf("printf number = %-9.6d\n", 1);
-	// ft_printf("mine   number =% 010d\n", -10);
-	// printf("printf number =% 010d\n", -10);
-	// ft_printf("mine   number =%-0 5d\n", -15);
-	// printf("printf number =%-0 5d\n", -15);
-	// ft_printf("------OCTAL CONVERSION--------\n\n");
-	// ft_printf("mine   number =%5.2o\n", -10);
-	// printf("printf number =%5.2o\n", -10);
-	// ft_printf("mine   number =%-0+5o\n", 0);
-	// printf("printf number =%-0+5o\n", 0);
-	// ft_printf("mine   number =%010.2o\n", -10);
-	// printf("printf number =%010.2o\n", -10);
-	// ft_printf("mine   number =%0 5o\n", 15);
-	// printf("printf number =%0 5o\n", 15);
-	// ft_printf("mine   number =% o\n", 123);
-	// printf("printf number =% o\n", 123);
-	// ft_printf("mine   number =% 05o\n", 10);
-	// printf("printf number =% 05o\n", 10);
-	// ft_printf("mine   number = %05o\n", 0);
-	// printf("printf number = %05o\n", 0);
-	// ft_printf("mine   number =%015o\n", -10);
-	// printf("printf number =%015o\n", -10);
-	// ft_printf("mine   number =%#20o\n", -15);
-	// printf("printf number =%#20o\n", -15);
-	ft_printf("------UNSIGNED CONVERSION--------\n\n");
-	ft_printf("mine   number =%5.2u\n", -10);
-	printf("printf number =%5.2u\n", -10);
-	ft_printf("mine   number =%0+5u\n", 0);
-	printf("printf number =%0+5u\n", 0);
-	ft_printf("mine   number =%010.2u\n", -10);
-	printf("printf number =%010.2u\n", -10);
-	ft_printf("mine   number =%0 5u\n", 15);
-	printf("printf number =%0 5u\n", 15);
-	ft_printf("mine   number =% u\n", 123);
-	printf("printf number =% u\n", 123);
-	ft_printf("mine   number =% 05u\n", 1058845644);
-	printf("printf number =% 05u\n", 1058845644);
-	ft_printf("mine   number = %05u\n", 0);
-	printf("printf number = %05u\n", 0);
-	ft_printf("mine   number =%-015u\n", -10);
-	printf("printf number =%-015u\n", -10);
-	ft_printf("mine   number =%-.20#20u\n", -15);
-	printf("printf number =%-.20#20u\n", -15);
+	ft_printf("----------  POINTER    -----------,---\n\n", "spaces to make sure!");
+
+	ft_printf("---mine string = %10p\n", toto, "spaces to make sure!");
+	printf("---libc string = %10p\n", toto, "spaces to make sure!");
+	ft_printf("---mine string = %0.29s\n", toto, "spaces to make sure!");
+	printf("---libc string = %0.29s\n", toto, "spaces to make sure!");
+	ft_printf("---mine string = %.5p\n", toto, "spaces to make sure!");
+	printf("---libc string = %.5p\n,",  toto, "spaces to make sure!");
+	ft_printf("---mine string = %040 .03p\n", "ab", "spaces to make sure!");
+	printf("---libc string = %040.03p\n", "ab", "spaces to make sure!");
+
+	ft_printf("---------INTEGERS------------,---\n\n", "spaces to make sure!");
+
+	ft_printf("mine   number = %15,c %s\n", 97, "spaces to make sure!");
+	printf("printf number = %15,c %s\n", 97, "spaces to make sure!");
+	ft_printf("mine   number =%5.2d, %s\n", -10, "spaces to make sure!");
+	printf("printf number =%5.2d, %s\n", -10, "spaces to make sure!");
+	ft_printf("mine   number =%.,0d %s\n", 0, "spaces to make sure!");
+	printf("printf number =%.,0d %s\n", 0, "spaces to make sure!");
+	ft_printf("mine   number =%010.2d, %s\n", -10, "spaces to make sure!");
+	printf("printf number =%010.2d, %s\n", -10, "spaces to make sure!");
+	ft_printf("mine   number =%0 5,d %s\n", 15, "spaces to make sure!");
+	printf("printf number =%0 5,d %s\n", 15, "spaces to make sure!");
+	ft_printf("mine   number =% d, %s\n", 123, "spaces to make sure!");
+	printf("printf number =% d, %s\n", 123, "spaces to make sure!");
+	ft_printf("mine   number =% 05,d %s\n", 10, "spaces to make sure!");
+	printf("printf number =% 05,d %s\n", 10, "spaces to make sure!");
+	ft_printf("mine   number = %-9.,6d %s\n", 1, "spaces to make sure!");
+	printf("printf number = %-9.,6d %s\n", 1, "spaces to make sure!");
+	ft_printf("mine   number =% 010d,%s\n", -10, "spaces to make sure!");
+	printf("printf number =% 010d,%s\n", -10, "spaces to make sure!");
+	ft_printf("mine   number =%-0 5d,%s\n", -15, "spaces to make sure!");
+	printf("printf number =%-0 5d,%s\n", -15, "spaces to make sure!");
+
+	ft_printf("------OCTAL CONVERSION-----,---\n %s\n", "spaces to make sure!");
+
+	ft_printf("mine   number =%5.2o,%s\n", -10, "spaces to make sure!");
+	printf("printf number =%5.2o,%s\n", -10, "spaces to make sure!");
+	ft_printf("mine   number =%-0+5o,%s\n", 0, "spaces to make sure!");
+	printf("printf number =%-0+5o,%s\n", 0, "spaces to make sure!");
+	ft_printf("mine   number =%010.2o,%s\n", -10, "spaces to make sure!");
+	printf("printf number =%010.2o,%s\n", -10, "spaces to make sure!");
+	ft_printf("mine   number =%0 5o,%s\n", 15, "spaces to make sure!");
+	printf("printf number =%0 5o,%s\n", 15, "spaces to make sure!");
+	ft_printf("mine   number =% o,%s\n", 123, "spaces to make sure!");
+	printf("printf number =% o,%s\n", 123, "spaces to make sure!");
+	ft_printf("mine   number =% 05o,%s\n", 10, "spaces to make sure!");
+	printf("printf number =% 05,o%s\n", 10, "spaces to make sure!");
+	ft_printf("mine   number = %0,5o%s\n", 0, "spaces to make sure!");
+	printf("printf number = %05o,%s\n", 0, "spaces to make sure!");
+	ft_printf("mine   number =%015o,%s\n", -10, "spaces to make sure!");
+	printf("printf number =%015o,%s\n", -10, "spaces to make sure!");
+	ft_printf("mine   number =%#20o,%s\n", -15, "spaces to make sure!");
+	printf("printf number =%#20o,%s\n", -15, "spaces to make sure!");
+
+	ft_printf("------UNSIGNED CONVERSION-----,---\n %s\n", "spaces to make sure!");
+
+	ft_printf("mine   number =%5.2u,%s\n", -10, "spaces to make sure!");
+	printf("printf number =%5.2u,%s\n", -10, "spaces to make sure!");
+	ft_printf("mine   number =%0+5u,%s\n", 0, "spaces to make sure!");
+	printf("printf number =%0+5u,%s\n", 0, "spaces to make sure!");
+	ft_printf("mine   number =%010.2u,%s\n", -10, "spaces to make sure!");
+	printf("printf number =%010.2u,%s\n", -10, "spaces to make sure!");
+	ft_printf("mine   number =%0 5u,%s\n", 15, "spaces to make sure!");
+	printf("printf number =%0 5u,%s\n", 15, "spaces to make sure!");
+	ft_printf("mine   number =% u,%s\n", 123, "spaces to make sure!");
+	printf("printf number =% u,%s\n", 123, "spaces to make sure!");
+	ft_printf("mine   number =% 05u %s\n", 1058845644, "spaces to make sure!");
+	printf("printf number =% 05u %s\n", 1058845644, "spaces to make sure!");
+	ft_printf("mine   number = %05u,%s\n", 0, "spaces to make sure!");
+	printf("printf number = %05u,%s\n", 0, "spaces to make sure!");
+	ft_printf("mine   number =%-015u,%s\n", -10, "spaces to make sure!");
+	printf("printf number =%-015u,%s\n", -10, "spaces to make sure!");
+	ft_printf("mine   number =%-.20#20u,%s\n", -15, "spaces to make sure!");
+	printf("printf number =%-.20#20u,%s\n", -15, "spaces to make sure!");
+
+	ft_printf("------HEX CONVERSION-----,---\n %s\n", "spaces to make sure!");
+
+	ft_printf("mine   number =%#5.9x,%s\n", -10, "spaces to make sure!");
+	printf("printf number =%#5.9x,%s\n", -10, "spaces to make sure!");
+	ft_printf("mine   number =%0+5X,%s\n", 0, "spaces to make sure!");
+	printf("printf number =%0+5X,%s\n", 0, "spaces to make sure!");
+	ft_printf("mine   number =%010.2X,%s\n", -10, "spaces to make sure!");
+	printf("printf number =%010.2X,%s\n", -10, "spaces to make sure!");
+	ft_printf("mine   number =%0 5X,%s\n", 15, "spaces to make sure!");
+	printf("printf number =%0 5X,%s\n", 15, "spaces to make sure!");
+	ft_printf("mine   number =% X,%s\n", 123, "spaces to make sure!");
+	printf("printf number =% X,%s\n", 123, "spaces to make sure!");
+	ft_printf("mine   number =%#05X,%s\n", 1058845644, "spaces to make sure!");
+	printf("printf number =%#05X,%s\n", 1058845644, "spaces to make sure!");
+	ft_printf("mine   number = %.0X,%s\n", 0, "spaces to make sure!");
+	printf("printf number = %.0X,%s\n", 0, "spaces to make sure!");
+	ft_printf("mine   number =%-#015o,%s\n", -10, "spaces to make sure!");
+	printf("printf number =%-#015o,%s\n", -10, "spaces to make sure!");
+	ft_printf("mine   number =%24.20#X,%s\n", -15, "spaces to make sure!");
+	printf("printf number =%24.20#X,%s\n", -15, "spaces to make sure!");
 	return (0);
 }

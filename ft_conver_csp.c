@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conversion.c                                    :+:      :+:    :+:   */
+/*   ft_conver_csp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/08 09:11:40 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/18 13:46:49 by rkamegne         ###   ########.fr       */
+/*   Created: 2019/04/26 18:36:54 by rkamegne          #+#    #+#             */
+/*   Updated: 2019/04/26 18:36:55 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void	ft_fetch_arg(t_conv *type, va_list arg)
 	char				*str;
 	unsigned long long	ptr;
 
-	if (type->c == 'c')
+	if (type->c == 'c' || type->c == '%')
 	{
-		val = va_arg(arg, unsigned int);
+		val = (type->c == '%') ? '%' : va_arg(arg, unsigned int);
 		convert_char((unsigned char)val, type);
 	}
 	else if (type->c == 's')

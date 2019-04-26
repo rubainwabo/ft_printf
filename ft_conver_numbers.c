@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conversion2.c                                   :+:      :+:    :+:   */
+/*   ft_conver_numbers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/17 17:03:16 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/22 12:04:09 by rkamegne         ###   ########.fr       */
+/*   Created: 2019/04/26 18:37:00 by rkamegne          #+#    #+#             */
+/*   Updated: 2019/04/26 18:37:02 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void		ft_padding_no_pre(intmax_t nbr, char *sign, t_conv *type, char *str
 		ft_putstr(str);
 	}
 }
-static void		ft_padding_pre(int nbr, char *sign, t_conv *type, char *str)
+static void		ft_padding_pre(intmax_t nbr, char *sign, t_conv *type, char *str)
 {
 	char	*strp;
 
@@ -104,19 +104,19 @@ void	ft_fetch_arg2(t_conv *type, va_list arg)
 
 	if (type->c == 'd')
 	{
-		nbr = va_arg(arg, int);
+		nbr = ft_size_signed(type, arg);
 		convert_int(nbr, type);
 	}
 	else if (type->c == 'i')
 	{
-		nbr = va_arg(arg, int);
+		nbr = ft_size_signed(type, arg);
 		convert_int(nbr, type);
 	}
 	else if (type->c == 'o')
 	{
-		val = va_arg(arg, unsigned int);
+		val = ft_size_unsigned(type, arg);
 		convert_unsigned(val, type, 8);
 	}
     else
-        ft_fecth_arg3(type, arg);    
+        ft_fetch_arg3(type, arg);    
 }

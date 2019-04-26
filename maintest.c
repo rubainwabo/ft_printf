@@ -18,6 +18,7 @@ int		main(void)
 	char	*str;
 
 	str = "All fine18";
+	int 	a;
 	long long test = -1155556894;
 //	printf("number=%oooood\n", number);
 	//printf("string = %llo\n", test);
@@ -29,5 +30,6 @@ int		main(void)
 //	printf("second integer =% 030.6d\n", -12000);
 //	printf("value of the long double max %Lf\n", LDBL_MAX);
 	//printf("integer =%-05c\n", 49);
-	printf("unsigned int = %ld", -9);
+	a = printf("unsigned int = %1s\n", "toto");
+	printf("a = %d\n", a);
 }

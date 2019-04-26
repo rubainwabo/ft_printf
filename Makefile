@@ -12,7 +12,7 @@
 
 NAME = libftprintf.a
 SRC = ft_conver_csp.c ft_printf.c ft_parse.c ft_utils.c ft_conver_numbers.c \
-	ft_conver_unumbers.c ft_conver_unumbers2.c
+	ft_unsigned_numbers.c ft_unsigned_numbers2.c
 MAIN = main.c
 OBJ = $(SRC:.c=.o) 
 SRC_LFT = $(wildcard libft/*.c)

@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <stdarg.h>
 # include <stdint.h>
-# define TYPES "cfspdiouxX"
+# define TYPES "%cfspdiouxX"
 
 typedef struct		s_conv
 {
@@ -33,15 +33,18 @@ typedef struct		s_conv
 	int				s; //space
 }					t_conv;
 
-int		ft_init(t_conv **type);
-int		ft_patoi(char *str, int *offset);
-void	ft_putrev_char(unsigned char, char *str, t_conv *type);
-void	ft_putrev_str(char *str, char *strp, t_conv *type);
-void	ft_padding_no_pre_u(t_conv *type, char *str, int len, int base);
-void	ft_padding_pre_u(t_conv *type, char *str, int base);
-void	convert_unsigned(uintmax_t val, t_conv *type, int base);
-void	ft_fetch_arg(t_conv *type, va_list arg);
-void	ft_fetch_arg2(t_conv *type, va_list arg);
-int		ft_parse(const char *restrict format, va_list arg);
-int		ft_printf(const char * restrict format, ...);
+int			ft_init(t_conv **type);
+int			ft_patoi(char *str, int *offset);
+void		ft_putrev_char(unsigned char, char *str, t_conv *type);
+void		ft_putrev_str(char *str, char *strp, t_conv *type);
+void		ft_padding_no_pre_u(t_conv *type, char *str, int len, int base);
+void		ft_padding_pre_u(t_conv *type, char *str, int base);
+intmax_t	ft_size_signed(t_conv *type, va_list arg);
+uintmax_t	ft_size_unsigned(t_conv *type, va_list arg);
+void		convert_unsigned(uintmax_t val, t_conv *type, int base);
+void		ft_fetch_arg(t_conv *type, va_list arg);
+void		ft_fetch_arg2(t_conv *type, va_list arg);
+void		ft_fetch_arg3(t_conv *type, va_list arg);
+int			ft_parse(const char *restrict format, va_list arg);
+int			ft_printf(const char * restrict format, ...);
 #endif
