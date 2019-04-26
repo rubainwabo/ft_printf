@@ -53,7 +53,7 @@ long double		ft_size_float(t_conv *type, va_list arg)
 void	ft_fetch_arg3(t_conv *type, va_list arg)
 {
 	uintmax_t		    val;
-	//long double			nbr;
+	long double			nbr;
     
 	if (type->c == 'u')
 	{
@@ -65,9 +65,9 @@ void	ft_fetch_arg3(t_conv *type, va_list arg)
         val = ft_size_unsigned(type, arg);
 		convert_unsigned(val, type, 16);
     }
-	/*else if (type->c == 'f')
+	else if (type->c == 'f')
 	{
 		nbr = ft_size_float(type, arg);
 		ft_convert_float(nbr, type);
-	}*/
+	}
 }
