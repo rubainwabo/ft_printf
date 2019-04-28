@@ -30,6 +30,7 @@ int		ft_patoi(char *str, int *offset)
 
 void	ft_putrev_char(unsigned char c, char *strp, t_conv *type)
 {
+	type->count += ft_strlen_err(strp) + 1;
 	if (!type->m)
 	{
 		ft_putstr(strp);
@@ -45,6 +46,7 @@ void	ft_putrev_char(unsigned char c, char *strp, t_conv *type)
 
 void	ft_putrev_str(char *str, char *strp, t_conv *type)
 {
+	type->count += ft_strlen_err(str) + ft_strlen_err(strp);
 	if (type->m)
 	{
 		ft_putstr(str);
@@ -75,5 +77,6 @@ int		ft_init(t_conv **type)
 	(*type)->z = 0;
 	(*type)->h = 0;
 	(*type)->p = 0;
+	(*type)->count = 0;
 	return (0);
 }

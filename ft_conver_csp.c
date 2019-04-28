@@ -25,7 +25,10 @@ void	convert_char(unsigned char c, t_conv *type)
 		ft_putrev_char(c, str, type);
 	}
 	else
+	{
+		type->count++;
 		ft_putchar(c);
+	}
 }
 
 void	convert_string(char *s, t_conv *type)
@@ -50,7 +53,10 @@ void	convert_string(char *s, t_conv *type)
 		ft_putrev_str(str, strp, type);
 	}
 	else
+	{
+		type->count += ft_strlen_err(str);
 		ft_putstr(str);
+	}
 }
 
 void	convert_pointer(unsigned long long ptr, t_conv *type)
@@ -73,7 +79,10 @@ void	convert_pointer(unsigned long long ptr, t_conv *type)
 		ft_putrev_str(str, strp, type);
 	}
 	else
+	{
+		type->count += ft_strlen_err(str);
 		ft_putstr(str);
+	}
 }
 
 void	ft_fetch_arg(t_conv *type, va_list arg)

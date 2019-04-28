@@ -47,8 +47,10 @@ int		main(int argc, char *argv[])
 int		ft_printf(const char * restrict format, ...)
 {
 	va_list	arg;
+	int		count;
+
 	va_start(arg, format);
-	ft_parse(format, arg);
+	count = ft_parse(format, arg);
 	va_end(arg);
-	return (0);
+	return (count);
 }

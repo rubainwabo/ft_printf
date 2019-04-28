@@ -37,6 +37,7 @@ static void		ft_padding_no_pre(intmax_t nbr, char *sign, t_conv *type, char *str
 	{
 		str = (sign) ? ft_strjoin_free(sign, str) : str;
 		(type->s) ? ft_putchar(' ') : 0;
+		type->count += ft_strlen_err(str);
 		ft_putstr(str);
 	}
 }
@@ -58,6 +59,7 @@ static void		ft_padding_pre(intmax_t nbr, char *sign, t_conv *type, char *str)
 	{
 		str = (sign) ? ft_strjoin_free(sign, str) : str;
 		(type->s) ? ft_putchar(' ') : 0;
+		type->count += ft_strlen_err(str);
 		ft_putstr(str);
 	}
 }

@@ -27,7 +27,10 @@ void	ft_padding_no_pre_u(t_conv *type, char *str, int len, int base)
 		ft_putrev_str(str, strp, type);
 	}
 	else
+	{
+		type->count += ft_strlen_err(str);
 		ft_putstr(str);
+	}
 }
 void	ft_padding_pre_u(t_conv *type, char *str, int base)
 {
@@ -42,7 +45,10 @@ void	ft_padding_pre_u(t_conv *type, char *str, int base)
 		ft_putrev_str(str, strp, type);
 	}
 	else
+	{
+		type->count += ft_strlen_err(str);
 		ft_putstr(str);
+	}
 }
 
 char	*ft_prefix(t_conv *type, int base)

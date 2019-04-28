@@ -69,16 +69,13 @@ static void			ft_get_options(char *format, t_conv *type, int offset)
 	}
 }
 
-static char		*ft_parse_conv(char *format, va_list arg)
+static char		*ft_parse_conv(char *format, va_list arg, t_conv *type)
 {
 	unsigned int		offset;
 	char				*o; // offset pointer to check conversion type
 	unsigned int		i;
-	t_conv				*type;
 
 	o = NULL;
-	if (ft_init(&type) == -1)
-		return (NULL);
 	i = -1;
 	offset = 0;
 	while (TYPES[++i])
@@ -103,16 +100,20 @@ static char		*ft_parse_conv(char *format, va_list arg)
 
 int		ft_parse(const char *restrict format, va_list arg)
 {
-	while (*format)
+	t_conv				*type;
+
+	if (ft_init(&type) == -1)
+		return (-1);
+	while (*format && type->count != -1)
 	{
 		if (*format == '%')
-		{
-			if (!(format = ft_parse_conv((char*)(format + 1), arg)))
-				return (-1);
-		}
+			format = ft_parse_conv((char*)(format + 1), arg, type);
 		else
+		{
 			ft_putchar(*format);
+			type->count++;
+		}
 		format++;
 	}
-	return (1);
+	return (type->count);
 }

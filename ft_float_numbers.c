@@ -12,8 +12,9 @@
 
 #include "libftprintf.h"
 
-void    ft_convert_float(t_conv *type)
+void    ft_convert_float(long double nbr, t_conv *type)
 {
+    (void)nbr;
     if (type->precision == -1)
         type->precision = 6;
 }

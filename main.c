@@ -72,7 +72,7 @@ int 	main(void)
 	ft_printf("---mine string = %-49s\n", toto, "spaces to make sure!");
 	printf("---libc string = %-49s\n", toto, "spaces to make sure!");
 	ft_printf("---mine string = %0 .29s\n", toto, "spaces to make sure!");
-	printf("---libc string = %0 .29s\,n", toto, "spaces to make sure!");
+	printf("---libc string = %0 .29s\n", toto, "spaces to make sure!");
 	ft_printf("---mine string = %-40 .10s\n", toto, "spaces to make sure!");
 	printf("---libc string = %-40 .10s\n", toto, "spaces to make sure!");
 	ft_printf("---mine string = %040 .-3s\n", "ab", "spaces to make sure!");
@@ -86,7 +86,7 @@ int 	main(void)
 	ft_printf("---mine string = %0.29s\n", toto, "spaces to make sure!");
 	printf("---libc string = %0.29s\n", toto, "spaces to make sure!");
 	ft_printf("---mine string = %.5p\n", toto, "spaces to make sure!");
-	printf("---libc string = %.5p\n,",  toto, "spaces to make sure!");
+	printf("---libc string = %.5p\n",  toto, "spaces to make sure!");
 	ft_printf("---mine string = %040 .03p\n", "ab", "spaces to make sure!");
 	printf("---libc string = %040.03p\n", "ab", "spaces to make sure!");
 
@@ -175,5 +175,11 @@ int 	main(void)
 	printf("printf number =%-#015o,%s\n", -10, "spaces to make sure!");
 	ft_printf("mine   number =%24.20#X,%s\n", -15, "spaces to make sure!");
 	printf("printf number =%24.20#X,%s\n", -15, "spaces to make sure!");
+
+	ft_printf("--------- COUNTING TEST------------\n\n");
+
+	ft_printf("%d\n",ft_printf("123ndd    123456789= %s, x = %#100X\n", "audrey works cause she is belgian", -15));
+	int a = printf("123ndd    123456789= %s, x = %#100X\n", "audrey works cause she is belgian", -15);
+	ft_putnbr(a);
 	return (0);
 }

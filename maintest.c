@@ -24,12 +24,16 @@ int		main(void)
 	//printf("string = %llo\n", test);
 	//printf("number=%.5 5d\n", number);
 
-	printf("----TEST OF THE DOIUXx CONVERSION----\n");
+// 	printf("----TEST OF THE DOIUXx CONVERSION----\n");
 
-	//printf("first integer =%5.6d\n", 0);
-//	printf("second integer =% 030.6d\n", -12000);
-//	printf("value of the long double max %Lf\n", LDBL_MAX);
-	//printf("integer =%-05c\n", 49);
-	a = printf("unsigned int = %1s\n", "toto");
-	printf("a = %d\n", a);
+// 	//printf("first integer =%5.6d\n", 0);
+// //	printf("second integer =% 030.6d\n", -12000);
+// //	printf("value of the long double max %Lf\n", LDBL_MAX);
+// 	//printf("integer =%-05c\n", 49);
+// 	a = printf("unsigned int = %1s\n", "toto");
+// 	printf("a = %d\n", a)
+	long double ld = -1.111111111118881;
+	double		nbr = 12565.36;
+
+	printf("ld = %Lf and nbr = %f\n", ld, nbr);
 }
