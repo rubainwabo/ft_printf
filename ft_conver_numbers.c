@@ -40,6 +40,7 @@ static void		ft_padding_no_pre(intmax_t nbr, char *sign, t_conv *type, char *str
 		type->count += ft_strlen_err(str);
 		ft_putstr(str);
 	}
+	type->count += (type->s) ? 1 : 0;
 }
 static void		ft_padding_pre(intmax_t nbr, char *sign, t_conv *type, char *str)
 {
@@ -62,6 +63,7 @@ static void		ft_padding_pre(intmax_t nbr, char *sign, t_conv *type, char *str)
 		type->count += ft_strlen_err(str);
 		ft_putstr(str);
 	}
+	type->count += (type->s) ? 1 : 0;
 }
 static char		*ft_check_sign(intmax_t nbr, t_conv *type)
 {
@@ -88,6 +90,7 @@ void	convert_int(intmax_t nbr, t_conv *type)
 	sign = ft_check_sign(nbr, type);
 	len = ft_nb_len(ft_abs(nbr), 10);
 	str = ft_itoa_base(ft_abs(nbr), 10, 0, len);
+	ft_putstr(str);
 	if (type->precision > len)
 	{
 		tmp = ft_str_putchar('0', (type->precision - len));

@@ -15,13 +15,13 @@
 intmax_t	ft_size_signed(t_conv *type, va_list arg)
 {
 	if (type->size == 97) // 97 stands for 'a' which stands for the size ll
-		return ((long long) va_arg(arg, int));
+		return ((long long) va_arg(arg, intmax_t));
 	else if (type->size == 98) // 98 stands for 'b' which stands for the size hh
-		return ((char) va_arg(arg, int));
+		return ((char) va_arg(arg, intmax_t));
 	else if (type->size == 104) // h
-		return ((short) va_arg(arg, int));
+		return ((short) va_arg(arg, intmax_t));
 	else if (type->size == 108) // l
-		return ((long) va_arg(arg, int));
+		return ((long) va_arg(arg, intmax_t));
 	else
 		return (va_arg(arg, int));	
 }
@@ -29,13 +29,13 @@ intmax_t	ft_size_signed(t_conv *type, va_list arg)
 uintmax_t	ft_size_unsigned(t_conv *type, va_list arg)
 {
 	if (type->size == 97) // 97 stands for 'a' which stands for the size ll
-		return ((unsigned long long) va_arg(arg, unsigned int));
+		return ((unsigned long long) va_arg(arg, uintmax_t));
 	else if (type->size == 98) // 98 stands for 'b' which stands for the size hh
-		return ((unsigned char) va_arg(arg, unsigned int));
+		return ((unsigned char) va_arg(arg, uintmax_t));
 	else if (type->size == 104) // h
-		return ((unsigned short) va_arg(arg, unsigned int));
+		return ((unsigned short) va_arg(arg, uintmax_t));
 	else if (type->size == 108) // l
-		return ((unsigned long) va_arg(arg, unsigned int));
+		return ((unsigned long) va_arg(arg, uintmax_t));
 	else
 		return (va_arg(arg, unsigned int));	
 }

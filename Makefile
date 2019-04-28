@@ -30,17 +30,13 @@ $(NAME): $(OBJ) $(INC) $(OBJ_LFT) $(INC_LFT)
 	@ranlib $(NAME)
 
 clean:
-	@make -C libft/ clean
+	@make -C libft clean
 	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	@make -C libft/ fclean
+	@make -C libft fclean
 	@/bin/rm -f $(NAME)
 
 re: fclean all
-
-debug: 
-	make
-	gcc $(MAIN) -o printf $(NAME)
 
 .PHONY : all clean fclean re

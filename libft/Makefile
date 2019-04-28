@@ -10,18 +10,24 @@
 #                                                                              #
 # **************************************************************************** #
 
+NAME = libft.a
 SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
 CC = gcc
 
-all: $(OBJ)
+all: $(NAME)
+
+$(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) -c $(SRC)
+	@ar -rcs $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 clean:
 	@/bin/rm -f $(OBJ)
 
 fclean: clean
+	@/bin/rm -f $(NAME)
 
 re: fclean all
 

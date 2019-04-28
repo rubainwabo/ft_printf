@@ -38,7 +38,7 @@ int			ft_init(t_conv **type);
 int			ft_patoi(char *str, int *offset);
 void		ft_putrev_char(unsigned char, char *str, t_conv *type);
 void		ft_putrev_str(char *str, char *strp, t_conv *type);
-void		ft_padding_no_pre_u(t_conv *type, char *str, int len, int base);
+void		ft_padding_no_pre_u(uintmax_t val, t_conv *type, char *str, int len, int base);
 void		ft_padding_pre_u(t_conv *type, char *str, int base);
 void		ft_convert_float(long double nbr, t_conv *type);
 intmax_t	ft_size_signed(t_conv *type, va_list arg);

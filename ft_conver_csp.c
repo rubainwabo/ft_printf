@@ -17,7 +17,7 @@ void	convert_char(unsigned char c, t_conv *type)
 	char	*str;
 	char	add;
 
-	if (type->padding)
+	if (type->padding && type->c == 'c')
 	{
 		add = (type->z != 0 && type->m == 0) ? '0' : ' ';
 		type->padding--;
@@ -38,6 +38,12 @@ void	convert_string(char *s, t_conv *type)
 	int		len;
 	char	add;
 
+	if (s == NULL)
+	{
+		type->count += 6;
+		ft_putstr("(null)");
+		return ;
+	}
 	len = ft_strlen_err(s);
 	if (type->precision >= 0)
 		str = ft_strccpy(s, type->precision);

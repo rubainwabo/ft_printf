@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include <float.h>
+#include "libftprintf.h"
 
 int		main(void)
 {
@@ -35,5 +36,10 @@ int		main(void)
 	long double ld = -1.111111111118881;
 	double		nbr = 12565.36;
 
-	printf("ld = %Lf and nbr = %f\n", ld, nbr);
+	//printf("ld = %Lf and nbr = %f\n", ld, nbr);
+	//printf("number = %d\n",ft_printf("%x", 4294967296));
+	//ft_printf("%012#x\n", 10);
+	//ft_printf("@moulitest: %5.x%5.0x\n", 0, 0);
+	//ft_printf("%.o %.0o\n", 0, 0);
+	ft_printf("%lld", -9223372036854775808);
 }
