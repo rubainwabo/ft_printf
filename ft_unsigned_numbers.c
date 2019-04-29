@@ -16,7 +16,7 @@ char	*ft_prefix(uintmax_t val, t_conv *type, int base)
 {
 	char	*pre;
 
-	type->h = (val == 0) ? 0 : type->h;
+	type->h = (val == 0 && type->precision != 0) ? 0 : type->h; 
 	pre = (type->h && base == 8) ? ft_str_putchar('0', 1) : 0;
 	if (type->h && base == 16 && val != 0)
 	{

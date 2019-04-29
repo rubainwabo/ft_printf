@@ -6,7 +6,7 @@
 #    By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/06 02:03:49 by rkamegne          #+#    #+#              #
-#    Updated: 2019/04/13 01:44:49 by rkamegne         ###   ########.fr        #
+#    Updated: 2019/04/29 21:38:16 by rkamegne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,9 +38,5 @@ fclean: clean
 	@/bin/rm -f $(NAME)
 
 re: fclean all
-
-debug: 
-	make
-	gcc $(MAIN) -o printf $(NAME)
 
 .PHONY : all clean fclean re
