@@ -175,7 +175,7 @@ int 	main(void)
 	// printf("printf number =%-#015o,%s\n", -10, "spaces to make sure!");
 	// ft_printf("mine   number =%24.20#X,%s\n", -15, "spaces to make sure!");
 	//ft_printf("%d", 4242);
-	ft_printf("%#jo\n", 0);
-	printf("%#jo\n", 0);
+	ft_printf("float of my printf = %f\n", -12.32);
+	//printf("%float of th printf = f\n", -12.32);
 	return (0);
 }

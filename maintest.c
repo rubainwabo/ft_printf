@@ -58,6 +58,7 @@ int		main(void)
 //	printf("value of the long double max %Lf\n", LDBL_MAX);
 	//printf("integer =%-05c\n", 49);
 	double	dec = 1.35409;
-	printf("round of dec = %.7Lf\n", ft_roundf(dec, 7));
-    printf("rounding of dec by printf = %.7f\n", dec);
+	//printf("round of dec = %.7Lf\n", ft_roundf(dec, 7));
+    //printf("rounding of dec by printf = %.7f\n", dec);
+    printf("padding case number =%12.3f\n", dec);
 }

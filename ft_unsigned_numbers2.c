@@ -55,7 +55,7 @@ long double		ft_size_float(t_conv *type, va_list arg)
 	else if (type->size == 108)
 		return ((long int) va_arg(arg, long double));
 	else
-		return ((double) va_arg(arg, long double));
+		return ((double) va_arg(arg, double));
 }
 
 void	ft_fetch_arg3(t_conv *type, va_list arg)
