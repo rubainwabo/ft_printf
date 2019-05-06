@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-int		ft_printf(const char * restrict format, ...)
+int		ft_printf(const char *restrict format, ...)
 {
 	va_list	arg;
 	int		count;

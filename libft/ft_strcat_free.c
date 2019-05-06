@@ -28,6 +28,5 @@ char	*ft_strcat_free(char *s1, char *s2)
 		j++;
 	}
 	s1[i] = '\0';
-	free(s2);
 	return (s1);
 }

@@ -12,85 +12,59 @@
 
 #include "libftprintf.h"
 
-long double		ft_roundf(long double nbr, t_conv *type)
+double		ft_roundf(long double nbr, int precision)
 {
-    long double		dec;
-    long long		tmp;
-    long long		i;
-    long double		res;
+	long double		diviseur;
 
-    i = 0;
-    res = 0;
-    dec = nbr - (long long)nbr;
-    while (i++ < type->precision)
-    {
-        dec -= (long long)dec;
-        dec *= 10;
-        tmp = (long long)dec;
-        if (i == type->precision)
-        {
-            dec -= (long long)dec;
-            dec *= 10;
-            tmp += ((long long)dec >= 5) ? 1 : 0;
-        }
-        res = res * 10 + tmp;
-    }
-    while (i-- > 1)
-        res /= 10;
-    return ((long long)nbr + res);
+	diviseur = 5;
+	if (precision == 0)
+		return (nbr + (nbr > 0.0 ? 0.5 : -0.5));
+	while (precision-- >= 0)
+		diviseur /= 10;
+	return (nbr + (nbr > 0.0 ? diviseur : -diviseur));
 }
 
-
-char	*ft_ftoa(long double nbr, t_conv *type)
+char		*ft_ftoa(long double nbr, t_conv *type)
 {
-	char			*str;
-	int				i;
-	double		dec;
+	char				*str;
+	int					i;
+	long double			dec;
 
 	i = 0;
-	if (type->precision == 0 ||
-	!(str = ft_strnew(type->precision + 1)))
+	if (nbr < 0)
+		nbr = -nbr;
+	if (!(str = ft_strnew(type->precision)))
 		return (NULL);
+	if (type->h == 0 && type->precision == 0)
+		return (ft_utoa((long long) nbr));
 	str[i] = '.';
+	//if (type->h && type->precision == 0)
+	//	return (ft_strjoin_free(ft_utoa((long long)nbr), str));
 	str[type->precision + 1] = '\0';
-	dec = nbr - (int)nbr;
+	dec = nbr - (long long)nbr;
 	while (++i < type->precision + 1)
 	{
 		dec *= 10;
-		str[i] = (int)dec + '0';
-		dec -= (int)dec;
+		str[i] = (long long)dec + '0';
+		dec -= (long long)dec;
 	}
 	str[i] = '\0';
-	//printf("utoa return = %s", ft_utoa((long long)nbr));
 	return (ft_strjoin_free(ft_utoa((long long)nbr), str));
 }
 
-static short	ft_check_sign(intmax_t nbr, t_conv *type)
+void		ft_convert_float(long double nbr, t_conv *type)
 {
-	short	sign;
-
-	if (nbr < 0)
-	{
-		sign = '-';
-		type->s = 0;
-	}
-	else
-		sign = (type->p) ? '+' : 0;
-	type->s = (type->p) ? 0 : type->s;
-	return (sign);
-}
-
-void    ft_convert_float(long double nbr, t_conv *type)
-{
-	short	sign;
+	char	*sign;
+	char	*str;
+	int		tmp;
 
 	sign = ft_check_sign(nbr, type);
-	if (nbr < 0 )
-		nbr = -nbr;
+	tmp = type->precision;
 	if (type->precision == -1)
 		type->precision = 6;
-	nbr = ft_roundf(nbr, type);
-	printf("rounded number = %Lf\n", nbr);
-	(sign) ? ft_putchar(sign) : 0;
-	ft_putstr(ft_ftoa(nbr, type));
+	nbr = ft_roundf(nbr, type->precision);
+	if (!(str = ft_ftoa(nbr, type)))
+		return ;
+	type->precision = tmp;
+	ft_padding_no_pre(nbr, sign, type, str);
 }

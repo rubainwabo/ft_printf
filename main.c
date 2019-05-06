@@ -13,6 +13,36 @@
 
 #include "libftprintf.h"
 
+
+	///// CANCER //////
+
+		// double		dec;
+	// int			tmp;
+	// int			i;
+	// double		res;
+
+	// i = 0;
+	// res = 0;
+	// dec = nbr - (int)nbr;
+	// while (i++ < type->precision)
+	// {
+	// 	dec *= 10.0;
+	// 	tmp = (int)dec;
+	// 	// if (i == type->precision)
+	// 	// {
+	// 	// 	dec -= (int)dec;
+	// 	// 	dec *= 10;
+	// 	// 	tmp += ((int)dec >= 5) ? 1 : 0;
+	// 	// }
+	// 	printf("in rounding tmp = %d\n", tmp);
+	// 	res = res * 10.0 + tmp;
+	// 	dec -= tmp;
+	// 	printf("in rounding res = %f\n", res);
+	// }
+	// while (i-- > 1)
+	// 	res /= 10.0;
+	// return ((int)nbr + res);
+
 int 	main(void)
 {
 	//ests for printf
@@ -77,7 +107,6 @@ int 	main(void)
 	// printf("---libc string = %-40 .10s\n", toto, "spaces to make sure!");
 	// ft_printf("---mine string = %040 .-3s\n", "ab", "spaces to make sure!");
 	// printf("---libc string = %040 .-3s\n", "ab", "spaces to make sure!");
-	// //ft_printf("he,re!!!\n", "spaces to make sure!");ft_putendl(ft_strccpy(,toto, 0), "spaces to make sure!");
 
 	// ft_printf("----------  POINTER    -----------,---\n\n", "spaces to make sure!");
 
@@ -174,8 +203,136 @@ int 	main(void)
 	// ft_printf("mine   number =%-#015o,%s\n", -10, "spaces to make sure!");
 	// printf("printf number =%-#015o,%s\n", -10, "spaces to make sure!");
 	// ft_printf("mine   number =%24.20#X,%s\n", -15, "spaces to make sure!");
-	//ft_printf("%d", 4242);
-	ft_printf("float of my printf = %f\n", -12.32);
-	//printf("%float of th printf = f\n", -12.32);
+	// ft_printf("%d", 4242);
+
+	// ft_printf("-----------FLOATING TEST FOR PRINTF--------\n");
+	// ft_printf("+ float test = %+.2lfspaces to make sure!\n", -92.45600);
+	// printf("- float test = %+.2lfspaces to make sure!\n", -92.45600);
+	// ft_printf("+ float test = %+18.6lfspaces to make sure!\n", 922337.2036854775808);
+	// printf("- float test = %+18.6lfspaces to make sure!\n", 922337.2036854775808);
+	// ft_printf("+ float test = %0 15Lfspaces to make sure!\n", (long double)365.165);
+	// printf("- float test = %0 15Lfspaces to make sure!\n", (long double)365.165);
+// 		int a = 0;
+
+
+
+// 	a = printf("%%\n");
+// 	printf("a = %d\n", a);
+// 	a = ft_printf("%%\n");
+// 	printf("a = %d\n", a);
+	
+// 	printf("here a = %d\n", a);
+
+
+//     ft_printf("%i test %i testo %d %s\n",17, 1999, 28, "dsds");
+//        printf("%i test %i testo %d %s\n",17, 1999, 28, "dsds");
+
+
+//  a = ft_printf("%6.4s %-15c %% %llu %+0d %dtest%#o %00d %+06d %d % 6d %f %.3lf %.3Lf %#x %#X \n",
+//  		"hello", 'a', (unsigned long long)17, 188, 18, 19, 199, 20, 31, 31,
+//  		 15.5, 12345.6789, (long double)98765.4321, 15, 15);
+
+//     printf("%d\n",a);
+
+//     a = printf("%6.4s %-15c %% %llu %+0d %dtest%#o %00d %+06d %d % 6d %f %.3lf %.3Lf %#x %#X \n",
+//     	"hello", 'a', (unsigned long long)17, 188, 18, 19, 199, 20, 31, 31,
+//     	 15.5, 12345.6789, (long double)98765.4321, 15, 15);
+//     printf("%d\n",a);
+
+
+
+// 	printf("%######ll.12d\n", 17);
+// 	ft_printf("%######ll.12d\n", 17);
+
+
+// 	printf("%-10s is a string\n", "this");
+// 	ft_printf("%-10s is a string\n", "this");
+// 	printf("%-.2s is a string\n", "this");
+// 	ft_printf("%-.2s is a string\n", "this");
+// 	printf("%-5.2s is a string\n", "this");
+// 	ft_printf("%-5.2s is a string\n", "this");
+// 	printf("@moulitest: %s\n", NULL);
+// 	ft_printf("@moulitest: %s\n", NULL);
+// 	printf("%s %s\n", NULL, "string");
+// 	ft_printf("%s %s\n", NULL, "string");
+
+
+// 	printf("%10s is a string\n", "");
+// 	ft_printf("%10s is a string\n", "");
+// 	printf("%.2s is a string\n", "");
+// 	ft_printf("%.2s is a string\n", "");
+// 	printf("%5.2s is a string\n", "");
+// 	ft_printf("%5.2s is a string\n", "");
+// 	printf("%-10s is a string\n", "");
+// 	ft_printf("%-10s is a string\n", "");
+// 	printf("%-.2s is a string\n", "");
+// 	ft_printf("%-.2s is a string\n", "");
+// 	printf("%-5.2s is a string\n", "");
+// 	ft_printf("%-5.2s is a string\n", "");
+
+// 	printf("%d\n", a);
+
+// 	printf("@moulitest: %c hello\n", 0);
+// 	ft_printf("@moulitest: %c hello\n", 0);
+
+
+printf("o - %f\n", 10.5);
+ft_printf("f - %f\n", 10.5);
+
+printf("o - %.f\n", 10.5);
+ft_printf("f - %.f\n", 10.5);
+
+printf("o - %.0f\n", 10.5);
+ft_printf("f - %.0f\n", 10.5);
+
+printf("o - %#.0f\n", 10.5);
+ft_printf("f - %#.0f\n", 10.5);
+
+ft_printf("\n");
+ft_printf("\n");
+
+printf("o - %f\n", 11.5);
+ft_printf("f - %f\n", 11.5);
+
+printf("o - %.f\n", 11.5);
+ft_printf("f - %.f\n", 11.5);
+
+printf("o - %.0f\n", 11.5);
+ft_printf("f - %.0f\n", 11.5);
+
+printf("o - %#.0f\n", 11.5);
+ft_printf("f - %#.0f\n", 11.5);
+
+ft_printf("\n");
+ft_printf("\n");
+
+
+printf("o - %f\n", 12.5);
+ft_printf("f - %f\n", 12.5);
+
+printf("o - %.f\n", 12.5);
+ft_printf("f - %.f\n", 12.5);
+
+printf("o - %.0f\n", 12.5);
+ft_printf("f - %.0f\n", 12.5);
+
+printf("o - %#.0f\n", 12.5);
+ft_printf("f - %#.0f\n", 12.5);
+
+ft_printf("\n");
+ft_printf("\n");
+
+
+printf("o - %f\n", 16.5);
+ft_printf("f - %f\n", 16.5);
+
+printf("o - %.f\n", 16.5);
+ft_printf("f - %.f\n", 16.5);
+
+printf("o - %.0f\n", 16.5);
+ft_printf("f - %.0f\n", 16.5);
+
+	printf("o - %#.0f\n", 16.5);
+	ft_printf("f - %#.0f\n", 16.5);
 	return (0);
 }

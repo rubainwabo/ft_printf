@@ -12,6 +12,12 @@
 
 #include "libftprintf.h"
 
+void	ft_putnull(t_conv *type)
+{
+	type->count += 6;
+	ft_putstr("(null)");
+}
+
 int		ft_patoi(char *str, int *offset)
 {
 	int		nbr;
@@ -41,7 +47,7 @@ void	ft_putrev_char(unsigned char c, char *strp, t_conv *type)
 		ft_putchar(c);
 		ft_putstr(strp);
 	}
-	free(strp);
+	ft_strdel(&strp);
 }
 
 void	ft_putrev_str(char *str, char *strp, t_conv *type)
@@ -57,8 +63,8 @@ void	ft_putrev_str(char *str, char *strp, t_conv *type)
 		ft_putstr(strp);
 		ft_putstr(str);
 	}
-	free(strp);
-	free(str);
+	//ft_strdel(&strp);
+	//ft_strdel(&str);
 }
 
 int		ft_init(t_conv **type)
@@ -78,5 +84,6 @@ int		ft_init(t_conv **type)
 	(*type)->h = 0;
 	(*type)->p = 0;
 	(*type)->count = 0;
+	(*type)->base = 0;
 	return (0);
 }

@@ -38,12 +38,6 @@ void	convert_string(char *s, t_conv *type)
 	int		len;
 	char	add;
 
-	if (s == NULL)
-	{
-		type->count += 6;
-		ft_putstr("(null)");
-		return ;
-	}
 	len = ft_strlen_err(s);
 	if (type->precision > -1)
 		str = ft_strccpy(s, type->precision);
@@ -62,17 +56,17 @@ void	convert_string(char *s, t_conv *type)
 	{
 		type->count += ft_strlen_err(str);
 		ft_putstr(str);
-		free(str);
+		ft_strdel(&str);
 	}
 }
 
 void	convert_pointer(unsigned long long ptr, t_conv *type)
 {
-	char 	*str;
-	char 	*strp;
-	char 	add;
+	char	*str;
+	char	*strp;
+	char	add;
 	int		len;
-	char 	*tmp;
+	char	*tmp;
 
 	tmp = ft_utoa_base(ptr, 16, 0, ft_nb_len(ptr, 16));
 	str = ft_strjoin("0x", tmp);
@@ -89,7 +83,7 @@ void	convert_pointer(unsigned long long ptr, t_conv *type)
 	{
 		type->count += ft_strlen_err(str);
 		ft_putstr(str);
-		free(str);
+		ft_strdel(&str);
 	}
 }
 
@@ -106,7 +100,11 @@ void	ft_fetch_arg(t_conv *type, va_list arg)
 	}
 	else if (type->c == 's')
 	{
-		str = va_arg(arg, char*);
+		if (!(str = va_arg(arg, char*)))
+		{
+			ft_putnull(type);
+			return ;
+		}
 		convert_string(str, type);
 	}
 	else if (type->c == 'p')

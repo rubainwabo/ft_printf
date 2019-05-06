@@ -12,14 +12,14 @@
 
 #include "libftprintf.h"
 
-static void		ft_padding_no_pre(intmax_t nbr, char *sign, t_conv *type, char *str)
+void	ft_padding_no_pre(intmax_t nbr, char *sign,
+														t_conv *type, char *str)
 {
 	char	*strp;
 	int		add;
 	int		len;
 
-	len = (type->p || nbr < 0) ? ft_strlen_err(str) + 1 :
-	ft_strlen_err(str) + 0;
+	len = (type->p || nbr < 0) ? ft_strlen_err(str) + 1 : ft_strlen_err(str);
 	if (type->padding > len)
 	{
 		add = (type->precision == -1 && type->z != 0 && type->m == 0) ? 48 : 32;
@@ -37,12 +37,11 @@ static void		ft_padding_no_pre(intmax_t nbr, char *sign, t_conv *type, char *str
 	{
 		str = (sign) ? ft_strjoin_free(sign, str) : str;
 		(type->s) ? ft_putchar(' ') : 0;
-		type->count += ft_strlen_err(str);
-		ft_putstr(str);
+		ft_putrev_str(str, NULL, type);
 	}
-	type->count += (type->s) ? 1 : 0;
 }
-static void		ft_padding_pre(intmax_t nbr, char *sign, t_conv *type, char *str)
+
+void	ft_padding_pre(intmax_t nbr, char *sign, t_conv *type, char *str)
 {
 	char	*strp;
 
@@ -62,10 +61,11 @@ static void		ft_padding_pre(intmax_t nbr, char *sign, t_conv *type, char *str)
 		(type->s) ? ft_putchar(' ') : 0;
 		type->count += ft_strlen_err(str);
 		ft_putstr(str);
+		ft_strdel(&str);
 	}
-	type->count += (type->s) ? 1 : 0;
 }
-static char		*ft_check_sign(intmax_t nbr, t_conv *type)
+
+char	*ft_check_sign(intmax_t nbr, t_conv *type)
 {
 	char	*sign;
 
@@ -77,6 +77,7 @@ static char		*ft_check_sign(intmax_t nbr, t_conv *type)
 	else
 		sign = (type->p) ? ft_str_putchar('+', 1) : NULL;
 	type->s = (type->p) ? 0 : type->s;
+	type->count += (type->s) ? 1 : 0;
 	return (sign);
 }
 
@@ -97,7 +98,8 @@ void	convert_int(intmax_t nbr, t_conv *type)
 		ft_padding_pre(nbr, sign, type, str);
 	}
 	else
-		(type->precision == 0 && nbr == 0) ? ft_padding_no_pre(nbr, sign, type, NULL)
+		(type->precision == 0 && nbr == 0) ?
+		ft_padding_no_pre(nbr, sign, type, NULL)
 		: ft_padding_no_pre(nbr, sign, type, str);
 }
 
@@ -116,11 +118,12 @@ void	ft_fetch_arg2(t_conv *type, va_list arg)
 		nbr = ft_size_signed(type, arg);
 		convert_int(nbr, type);
 	}
-	else if (type->c == 'o')
+	else if (type->c == 'o' || type->c == 'O')
 	{
+		type->base = 8;
 		val = ft_size_unsigned(type, arg);
-		convert_unsigned(val, type, 8);
+		convert_unsigned(val, type);
 	}
-    else
-        ft_fetch_arg3(type, arg);    
+	else
+		ft_fetch_arg3(type, arg);
 }

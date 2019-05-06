@@ -12,15 +12,15 @@
 
 #include "libft.h"
 
-int		ft_isalpha_spec(int c)
+static	int		ft_isalpha_spec(int c)
 {
 	if (c == 'c' || c == 's' || c == 'd' || c == 'i' || c == 'o' || c == 'u' ||
-		c == 'x' || c == 'X')
+		c == 'x' || c == 'X' || c == '%' || c == 'f')
 		return (1);
 	return (0);
 }
 
-char	*ft_strchr_alpha(const char *s, int c)
+char			*ft_strchr_alpha(const char *s, int c)
 {
 	int		i;
 

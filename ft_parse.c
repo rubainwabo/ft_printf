@@ -1,79 +1,75 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse.c                                       :+:      :+:    :+:     */
+/*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkamegne <rkamegne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/18 15:24:13 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/04/20 19:31:30 by rkamegne         ###   ########.fr       */
+/*   Created: 2019/05/06 15:08:56 by rkamegne          #+#    #+#             */
+/*   Updated: 2019/05/06 15:09:02 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static void		ft_get_size(t_conv *type, char *str, int i)
+static	void	ft_get_size(t_conv *type, char *format, int i)
 {
-	int 	count;
+	int			count;
 
 	count = 0;
-	if (type->c == 'f' && str[i] == 'L' && (type->size = 'L'))
+	if (type->c == 'f' && format[i] == 'L' && (type->size = 'L'))
 		return ;
-	else if (str[i] == 'j')
+	else if (format[i] == 'j')
 		type->size = 'j';
-	else if (str[i] == 'z' && type->size != 'j')
+	else if (format[i] == 'z' && type->size != 'j')
 		type->size = 'z';
-	else if (str[i] == 'l' && type->size != 'a' && type->size != 'z' && type->size
-	!= 'j' && type->size != 'l' && (count = ft_count_words(str + i, 'l')))
+	else if (format[i] == 'l' && type->size != 'a' && type->size != 'z'
+	&& type->size != 'j' && type->size != 'l' &&
+	(count = ft_count_words(format + i, 'l')))
 		type->size = (count % 2) ? 'l' : 'a';
-	else if (str[i] == 'h' && type->size != 'z' && type->size != 'j' &&
+	else if (format[i] == 'h' && type->size != 'z' && type->size != 'j' &&
 		type->size != 'a' && type->size != 'l' &&
 		type->size != 'b' && type->size != 'h' &&
-		(count = ft_count_words(str + i, 'h')))
-		type->size = (count % 2) ? 'h' : 'b';	
+		(count = ft_count_words(format + i, 'h')))
+		type->size = (count % 2) ? 'h' : 'b';
 }
 
-
-static void		ft_get_prec_padd(t_conv *type, char *str, int *i) //padding, precision
+static	void	ft_get_prec_padd(t_conv *type, char *format, int *i)
 {
-	if (str[*i] == '.')
+	if (format[*i] == '.')
 	{
 		*i += 1;
-		type->precision = ft_patoi(str, i);
+		type->precision = ft_patoi(format, i);
 	}
-	else if (ft_isdigit(str[*i]) && (str[*i] - '0') > 0)
-		type->padding = ft_patoi(str, i);
+	else if (ft_isdigit(format[*i]) && (format[*i] - '0') > 0)
+		type->padding = ft_patoi(format, i);
 	else
-		ft_get_size(type, str, *i);	
+		ft_get_size(type, format, *i);
 }
 
-static void			ft_get_options(char *format, t_conv *type, int offset)
+static	void	ft_get_options(char *format, t_conv *type, int offset)
 {
-	int 			i; // a stands for ll  and b for hh
-	char			*str;
+	int			i;
 
 	i = -1;
-	if (!(str = (char*)ft_memcpy((void*)ft_strnew(offset), (void*)format,
-					(size_t)offset)))
-		return ;
 	while (++i < offset)
 	{
-		if (str[i] == '+')
+		if (format[i] == '+')
 			type->p = 1;
-		else if (str[i] == '-')
+		else if (format[i] == '-')
 			type->m = 1;
-		else if (str[i] == '#')
+		else if (format[i] == '#')
 			type->h = 1;
-		else if (str[i] == ' ')
+		else if (format[i] == ' ')
 			type->s = 1;
-		else if (str[i] == '0')
+		else if (format[i] == '0')
 			type->z = 1;
 		else
-			ft_get_prec_padd(type, str, &i);
+			ft_get_prec_padd(type, format, &i);
 	}
 }
 
-static char		*ft_parse_conv(char *format, va_list arg, t_conv *type)
+static	char	*ft_parse_conv(char *format, va_list arg, t_conv *type)
 {
 	unsigned int		offset;
 	char				*o;
@@ -87,7 +83,7 @@ static char		*ft_parse_conv(char *format, va_list arg, t_conv *type)
 		if ((o = ft_strchr_alpha(format, TYPES[i])))
 		{
 			offset = o - format;
-			break;
+			break ;
 		}
 	}
 	if (o != NULL)
@@ -102,7 +98,7 @@ static char		*ft_parse_conv(char *format, va_list arg, t_conv *type)
 	return (format);
 }
 
-int		ft_parse(const char *restrict format, va_list arg)
+int				ft_parse(const char *restrict format, va_list arg)
 {
 	t_conv				*type;
 	int					count;

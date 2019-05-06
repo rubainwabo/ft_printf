@@ -19,7 +19,7 @@ char	*ft_str_putchar(int c, int len)
 
 	i = -1;
 	if (!(s = ft_strnew(len)))
-		exit(EXIT_FAILURE);
+		return (NULL);
 	while (++i < len)
 		s[i] = c;
 	s[i] = '\0';
