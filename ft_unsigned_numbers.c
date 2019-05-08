@@ -17,7 +17,7 @@ char	*ft_prefix(uintmax_t val, t_conv *type)
 	char	*pre;
 
 	type->h = (val == 0 && type->precision != 0) ? 0 : type->h;
-	pre = (type->h && type->base == 8) ? ft_str_putchar('0', 1) : 0;
+	pre = (type->h && type->base == 8) ? ft_str_putchar('0', 1) : NULL;
 	if (type->h && type->base == 16 && val != 0)
 	{
 		pre = ft_strnew(2);
@@ -89,8 +89,8 @@ void	convert_unsigned(uintmax_t val, t_conv *type)
 	if (type->precision > len)
 	{
 		pre = ft_prefix(val, type);
-		str = ((type->h && type->base == 8) || (type->precision == -1
-		&& type->padding == 0 && type->base == 16)) ?
+		str = ((type->h && type->base == 8) || (type->precision == -1 &&
+		type->padding == 0 && type->base == 16)) ?
 		ft_strjoin_free(pre, str) : str;
 		type->precision -= (type->h && type->base == 8) ? 1 : 0;
 		tmp = ft_str_putchar('0', (type->precision - len));
@@ -99,6 +99,9 @@ void	convert_unsigned(uintmax_t val, t_conv *type)
 		ft_padding_preu(type, str);
 	}
 	else
+	{
 		(type->precision == 0 && val == 0) ? ft_padding_no_preu(val,
 		type, NULL, 0) : ft_padding_no_preu(val, type, str, len);
+		(type->precision == 0 && val == 0) ? ft_strdel(&str) : 0;
+	}
 }

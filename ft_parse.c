@@ -113,6 +113,7 @@ int				ft_parse(const char *restrict format, va_list arg)
 			if (!(format = ft_parse_conv((char*)(format + 1), arg, type)))
 				return (-1);
 			count += type->count;
+			free(type);
 		}
 		else
 		{

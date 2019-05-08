@@ -33,13 +33,13 @@ char		*ft_ftoa(long double nbr, t_conv *type)
 	i = 0;
 	if (nbr < 0)
 		nbr = -nbr;
-	if (!(str = ft_strnew(type->precision)))
+	if (!(str = ft_strnew(type->precision + 1)))
 		return (NULL);
 	if (type->h == 0 && type->precision == 0)
-		return (ft_utoa((long long) nbr));
+		return (ft_utoa((long long)nbr));
 	str[i] = '.';
-	//if (type->h && type->precision == 0)
-	//	return (ft_strjoin_free(ft_utoa((long long)nbr), str));
+	if (type->h && type->precision == 0)
+		return (ft_strjoin_free(ft_utoa((long long)nbr), str));
 	str[type->precision + 1] = '\0';
 	dec = nbr - (long long)nbr;
 	while (++i < type->precision + 1)
@@ -48,7 +48,6 @@ char		*ft_ftoa(long double nbr, t_conv *type)
 		str[i] = (long long)dec + '0';
 		dec -= (long long)dec;
 	}
-	str[i] = '\0';
 	return (ft_strjoin_free(ft_utoa((long long)nbr), str));
 }
 
@@ -62,9 +61,13 @@ void		ft_convert_float(long double nbr, t_conv *type)
 	tmp = type->precision;
 	if (type->precision == -1)
 		type->precision = 6;
-	nbr = ft_roundf(nbr, type->precision);
+	nbr = (type->h == 0 && type->precision != 0) ?
+	ft_roundf(nbr, type->precision) : nbr;
 	if (!(str = ft_ftoa(nbr, type)))
+	{
+		ft_strdel(&sign);
 		return ;
+	}
 	type->precision = tmp;
 	ft_padding_no_pre(nbr, sign, type, str);
 }

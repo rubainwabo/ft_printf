@@ -6,7 +6,7 @@
 /*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 21:45:21 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/05/06 20:19:22 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/05/08 20:01:34 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,4 @@ int				ft_nb_len(unsigned long long n, int base);
 char			*ft_itoa_base(long long n, int base, int maj, int len);
 char			*ft_strjoin_free(char *s1, char *s2);
 char			*ft_strcat_free(char *s1, char *s2);
-void			ft_putstr_free(char *str);
 #endif

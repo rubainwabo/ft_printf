@@ -63,8 +63,8 @@ void	ft_putrev_str(char *str, char *strp, t_conv *type)
 		ft_putstr(strp);
 		ft_putstr(str);
 	}
-	//ft_strdel(&strp);
-	//ft_strdel(&str);
+	ft_strdel(&strp);
+	ft_strdel(&str);
 }
 
 int		ft_init(t_conv **type)

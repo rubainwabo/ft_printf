@@ -6,7 +6,7 @@
 #    By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/18 18:23:24 by rkamegne          #+#    #+#              #
-#    Updated: 2019/05/06 20:19:49 by rkamegne         ###   ########.fr        #
+#    Updated: 2019/05/08 20:01:18 by rkamegne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC = ft_lstdel.c ft_putendl_fd.c ft_strdel.c ft_strnequ.c ft_atoi.c ft_lstdelon
 	ft_utoa_base.c ft_isdigit.c ft_memmove.c ft_strchr.c ft_strmap.c get_next_line.c\
 	ft_ispace.c ft_memset.c ft_strchr_alpha.c ft_strmapi.c ft_isprint.c ft_putchar.c\
 	ft_strclr.c ft_strncat.c ft_itoa.c ft_putchar_fd.c ft_strcmp.c ft_strncmp.c ft_lstadd.c\
-	ft_putendl.c ft_strcpy.c ft_strncpy.c ft_putstr_free.c
+	ft_putendl.c ft_strcpy.c ft_strncpy.c
 
 OBJ = $(SRC:.c=.o)
 

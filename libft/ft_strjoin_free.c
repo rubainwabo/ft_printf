@@ -27,8 +27,7 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	while (s1[++i])
 		str[i] = s1[i];
 	str[i] = '\0';
-	str = ft_strjoin(str, s2);
-	free(s2);
-	free(s1);
+	str = ft_strcat_free(str, s2);
+	ft_strdel(&s1);
 	return (str);
 }

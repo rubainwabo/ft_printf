@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <stdarg.h>
 # include <stdint.h>
-# define TYPES "%cfspdiouUxX"
+# define TYPES "%cfspdiouxXb"
 
 typedef struct		s_conv
 {

@@ -98,9 +98,12 @@ void	convert_int(intmax_t nbr, t_conv *type)
 		ft_padding_pre(nbr, sign, type, str);
 	}
 	else
+	{
 		(type->precision == 0 && nbr == 0) ?
 		ft_padding_no_pre(nbr, sign, type, NULL)
 		: ft_padding_no_pre(nbr, sign, type, str);
+		(type->precision == 0 && nbr == 0) ? ft_strdel(&str) : 0;
+	}
 }
 
 void	ft_fetch_arg2(t_conv *type, va_list arg)
@@ -118,7 +121,7 @@ void	ft_fetch_arg2(t_conv *type, va_list arg)
 		nbr = ft_size_signed(type, arg);
 		convert_int(nbr, type);
 	}
-	else if (type->c == 'o' || type->c == 'O')
+	else if (type->c == 'o')
 	{
 		type->base = 8;
 		val = ft_size_unsigned(type, arg);

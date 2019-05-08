@@ -15,7 +15,7 @@
 static	int		ft_isalpha_spec(int c)
 {
 	if (c == 'c' || c == 's' || c == 'd' || c == 'i' || c == 'o' || c == 'u' ||
-		c == 'x' || c == 'X' || c == '%' || c == 'f')
+		c == 'x' || c == 'X' || c == '%' || c == 'f' || c == 'p' || c == 'b')
 		return (1);
 	return (0);
 }

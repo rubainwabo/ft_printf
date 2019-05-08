@@ -69,13 +69,13 @@ void			ft_fetch_arg3(t_conv *type, va_list arg)
 		val = ft_size_unsigned(type, arg);
 		convert_unsigned(val, type);
 	}
-	else if (type->c == 'x' || type->c == 'X')
+	else if (type->c == 'x' || type->c == 'X' || type->c == 'b')
 	{
-		type->base = 16;
+		type->base = (type->c == 'b') ? 2 : 16;
 		val = ft_size_unsigned(type, arg);
 		convert_unsigned(val, type);
 	}
-	else if (type->c == 'f' || type->c == 'F')
+	else if (type->c == 'f')
 	{
 		nbr = ft_size_float(type, arg);
 		ft_convert_float(nbr, type);
